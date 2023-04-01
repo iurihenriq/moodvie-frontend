@@ -1,0 +1,29 @@
+<div class="content">
+  <div class="nav">
+    <div class="container-logo">
+      <img id="logo" src="./../../../assets/images/logo.svg" alt="Logo Moodvie">
+      <p id="title-logo">Moodvie</p>
+    </div>
+    <nav class="sidebar">
+      <ul>
+        <li>
+          <a routerLink="/recommender" routerLinkActive="active" class="item-menu">
+            Recomendador
+          </a>
+        </li>
+        <li>
+          <a routerLink="/library" routerLinkActive="active" class="item-menu">
+            Biblioteca
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <main role="main" class="card">
+    <div class="recommender-library">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="more-info">
+    </div>
+  </main>
+</div>
