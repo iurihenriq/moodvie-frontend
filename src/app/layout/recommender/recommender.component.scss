@@ -1,4 +1,6 @@
-@import "../../../assets/styles/colors.scss";
+@import "./../../../assets/styles/colors";
+@import "./../../../assets/styles//fonts-size";
+@import "./../../../assets/styles/sizes";
 
 .content {
   color: $color-font-card;
@@ -16,9 +18,9 @@
     align-items: center;
     justify-content: space-between;
     background-color: $secondary-color;
-    border-radius: 25px;
+    border-radius: $border-radius-large;
     width: 100%;
-    padding: 25px;
+    padding: $padding-large;
     box-sizing: border-box;
   }
 
@@ -28,12 +30,12 @@
     }
 
     p {
-      font-size: 2.5rem;
+      font-size: $font-size-large;
     }
     a {
-      font-size: 1.8rem;
-      padding: 10px;
-      border-radius: 10px;
+      font-size: $font-size-small;
+      padding: $padding-medium;
+      border-radius: $border-radius-medium;
       background-color: $details-color;
     }
   }
@@ -42,9 +44,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: calc($gap-medium*2);
     margin-bottom: 10px;
-    font-size: 1.8rem;
+    font-size: $font-size-small;
 
     a {
       text-decoration: none;
@@ -60,9 +62,9 @@
     // height: 350px;
 
     .content-moovie {
-      padding: 25px;
+      padding: $padding-large;
       display: flex;
-      gap: 25px;
+      gap: $gap-large;
       flex-direction: column;
     }
 
@@ -72,7 +74,7 @@
       background-position: center;
       width: 100%;
       height: 100%;
-      border-radius: 25px 0 0 25px;
+      border-radius: $border-radius-large 0 0 $border-radius-large;
     }
 
     .streaming {
@@ -81,26 +83,26 @@
       background-position: center;
       width: 40px;
       height: 40px;
-      border-radius: 10px;
+      border-radius: $border-radius-medium;
     }
 
     .gender {
       display: flex;
-      gap: 15px;
-      font-size: 1.2rem;
+      gap: calc($gap-small*3);
+      font-size: $font-size-tiny;
 
       p {
         border: 1px solid $details-color;
         color: $details-color;
         text-transform: uppercase;
-        border-radius: 5px;
-        padding: 5px;
+        border-radius: $border-radius-small;
+        padding: $padding-small;
       }
     }
 
     .sinopse-gender {
       display: flex;
-      gap: 10px;
+      gap: $gap-medium;
       flex-direction: column;
     }
 
@@ -111,22 +113,22 @@
     }
 
     .sinopse {
-      font-size: 1.8rem;
+      font-size: $font-size-small;
     }
 
     .title-stars {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: calc($gap-medium*3);
     }
 
     .title {
-      font-size: 2.5rem;
+      font-size: $font-size-large;
       font-weight: 500;
     }
 
     .infos {
-      font-size: 1.2rem;
+      font-size: $font-size-tiny;
       font-weight: 100;
     }
 
@@ -134,14 +136,14 @@
       display: flex;
       align-items: center;
       justify-content: end;
-      gap: 15px;
+      gap: calc($gap-small*3);
     }
 
     .button {
-      padding: 10px;
+      padding: $padding-medium;
       text-decoration: none;
       color: $color-font-card;
-      border-radius: 10px;
+      border-radius: $border-radius-medium;
     }
 
     .watched,
@@ -152,18 +154,18 @@
     .next {
       display: flex;
       background-color: $details-color;
-      font-size: 1.8rem;
+      font-size: $font-size-small;
     }
   }
 
   .historic {
     display: flex;
     align-items: start;
-    gap: 10px;
+    gap: $gap-medium;
     flex-direction: column;
 
     p {
-      font-size: 1.8rem;
+      font-size: $font-size-small;
     }
 
     .movie-historic {
@@ -172,7 +174,7 @@
       background-position: center;
       width: 120px;
       height: 200px;
-      border-radius: 10px;
+      border-radius: $border-radius-medium;
     }
   }
 }
