@@ -3,6 +3,51 @@
     <p>Se sentindo <span class="label-mood">{{mood}}</span></p>
     <a>Alterar sentimento</a>
   </div>
-  <div class="container"></div>
-  <div class="container"></div>
+  <div>
+    <div class="movie-serie">
+      <a href="">Filme</a>
+      <a href="">Série</a>
+    </div>
+    <div class="container moovie">
+      <div [style.background-image]="'url('+ banner + ')'" class="banner"></div>
+      <div class="content-moovie">
+        <div class="header">
+          <div>
+            <div class="title-stars-streaming">
+              <div class="title-stars">
+                <p class="title">{{title}}</p>
+                <div>
+                  <img src="./../../../assets/images/star.svg" *ngFor="let star of starsArray">
+                </div>
+              </div>
+              <a [href]="linkStreaming" target="_blank">
+                <div [style.background-image]="'url('+ streamingURL + ')'" class="streaming"></div>
+              </a>
+            </div>
+            <p class="infos">{{year}} ● {{duration}}</p>
+          </div>
+        </div>
+
+        <div class="sinopse-gender">
+          <p class="sinopse">{{sinopse}}</p>
+          <div class="gender">
+            <p *ngFor="let gender of genders">{{gender.name}}</p>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <a class="button watched" href=""><mat-icon>remove_red_eye</mat-icon></a>
+          <a class="button save" href=""><mat-icon>bookmark</mat-icon></a>
+          <a class="button next" href="">Próximo <mat-icon>navigate_next</mat-icon></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container historic">
+    <p>Histórico</p>
+    <div>
+      <div *ngFor="let movie of movies" [style.background-image]="'url('+ movie.name + ')'" class="movie-historic"></div>
+    </div>
+  </div>
 </div>

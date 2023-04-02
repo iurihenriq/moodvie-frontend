@@ -1,4 +1,4 @@
-@import "../../../assets/styles/colors";
+@import "../../../assets/styles/colors.scss";
 
 ul {
   list-style-type: none;
@@ -30,9 +30,6 @@ ul {
   margin-top: 5px;
   transform: scaleX(0);
   transition: transform 0.3s ease;
-  // position: absolute; /* para que ocupe a largura do pai */
-  // bottom: 0; /* para que fique alinhado na parte inferior */
-  width: 100%; /* para que ocupe a largura total do pai */
 }
 
 .item-menu:hover::after {

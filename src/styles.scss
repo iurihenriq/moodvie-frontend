@@ -1,4 +1,6 @@
-@import './assets/styles/colors';
+@import './assets/styles/colors.scss';
+@import './assets/styles/fonts-size.scss';
+@import './assets/styles/sizes.scss';
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 html, body { height: 100%; font-size: 62.5%; }

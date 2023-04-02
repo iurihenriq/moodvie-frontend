@@ -9,11 +9,13 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
+      { path: '', redirectTo: 'recommender', pathMatch: 'full' },
       { path: 'recommender', component: RecommenderComponent },
       { path: 'library', component: LibraryComponent },
-    ],
-  },
+    ]
+  }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
