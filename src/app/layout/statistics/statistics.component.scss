@@ -1,0 +1,59 @@
+@import "./../../../assets/styles/colors";
+@import './../../../assets/styles/fonts-size';
+@import './../../../assets/styles/sizes';
+
+.content {
+  display: flex;
+  gap: $gap-medium;
+  flex-direction: column;
+
+  .title-card {
+    font-size: $font-size-large;
+    font-weight: 500;
+  }
+
+  .infos {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+  }
+}
+
+// .container-infos {
+//   background-color: $background-color;
+//   border-radius: $border-radius-medium;
+//   padding: $padding-large;
+
+//   .title-infos {
+//     font-size: $font-size-small;
+//   }
+// }
+
+.container-infos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:  $gap-large;;
+}
+
+.infos {
+    background-color: $background-color;
+  border-radius: $border-radius-medium;
+  padding: $padding-large;
+
+    .title-infos {
+    font-size: $font-size-small;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.amount {
+  font-size: calc($font-size-large*2) ;
+}
+
+.title {
+  font-size: $font-size-tiny;
+}

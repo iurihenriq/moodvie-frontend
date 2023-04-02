@@ -1,5 +1,5 @@
 @import "./../../../assets/styles/colors";
-@import './../../../assets/styles//fonts-size';
+@import './../../../assets/styles/fonts-size';
 @import './../../../assets/styles/sizes';
 
 ul {
@@ -91,5 +91,35 @@ ul {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+  }
+
+  .more-info {
+    margin: 0 0 0 $margin-large;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-medium;
+    box-sizing: border-box;
+
+    .profile {
+      align-self: end;
+    }
+  }
+}
+
+.rounded-menu {
+  border-radius: 50px;
+  overflow: hidden;
+
+  .mat-menu-content {
+    padding: 0;
+  }
+
+  .mat-menu-item {
+    width: 100%;
+    padding: 12px 24px;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
   }
 }

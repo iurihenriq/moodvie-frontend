@@ -45,9 +45,16 @@
   </div>
 
   <div class="container historic">
-    <p>Histórico</p>
-    <div>
-      <div *ngFor="let movie of movies" [style.background-image]="'url('+ movie.name + ')'" class="movie-historic"></div>
+    <div class="flex">
+      <p>Histórico</p>
+      <div class="navigate">
+        <a class="next" href=""><mat-icon>navigate_before</mat-icon></a>
+        <a class="next" href=""><mat-icon>navigate_next</mat-icon></a>
+      </div>
+    </div>
+    <div class="container-movies">
+      <!-- <div *ngFor="let movie of movies" [style.background-image]="'url('+ movie.name + ')'" class="movie-historic"></div> -->
+      <img class="movie" [src]="banner" alt="movie" *ngFor="let star of movieArray">
     </div>
   </div>
 </div>

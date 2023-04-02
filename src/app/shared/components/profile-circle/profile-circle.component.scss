@@ -1,0 +1,12 @@
+@import "./../../../../assets/styles/colors.scss";
+@import './../../../../assets/styles/fonts-size';
+@import './../../../../assets/styles/sizes';
+
+.circle {
+  // font-size: $font-size-large;
+  border-radius: 50%;
+  padding: 10px;
+  border: 2px solid $details-color;
+  color: $details-color;
+  cursor: pointer;
+}

@@ -44,7 +44,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: calc($gap-medium*2);
+    gap: calc($gap-medium * 2);
     margin-bottom: 10px;
     font-size: $font-size-small;
 
@@ -88,7 +88,7 @@
 
     .gender {
       display: flex;
-      gap: calc($gap-small*3);
+      gap: calc($gap-small * 3);
       font-size: $font-size-tiny;
 
       p {
@@ -119,7 +119,7 @@
     .title-stars {
       display: flex;
       align-items: center;
-      gap: calc($gap-medium*3);
+      gap: calc($gap-medium * 3);
     }
 
     .title {
@@ -136,7 +136,7 @@
       display: flex;
       align-items: center;
       justify-content: end;
-      gap: calc($gap-small*3);
+      gap: calc($gap-small * 3);
     }
 
     .button {
@@ -172,9 +172,30 @@
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      width: 120px;
       height: 200px;
       border-radius: $border-radius-medium;
+    }
+
+    .flex {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navigate a{
+      color: $color-font-card;
+    }
+
+    .movie {
+      width: 100%;
+      border-radius: $border-radius-medium;
+    }
+
+    .container-movies {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: calc($margin-small * 3);
     }
   }
 }

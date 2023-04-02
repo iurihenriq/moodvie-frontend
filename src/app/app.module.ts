@@ -11,6 +11,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from './shared/shared.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './layout/layout-routing/layout.module';
+import { StatisticsComponent } from './layout/statistics/statistics.component';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);

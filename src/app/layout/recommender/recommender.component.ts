@@ -22,7 +22,15 @@ export class RecommenderComponent {
     {name: 'terror'}
   ]
   movies: any = [
-    {name: "../../../assets/images/banner.jpg"}
+    {name: "../../../assets/images/banner.jpg"},
+    {name: "../../../assets/images/banner.jpg"},
+    {name: "../../../assets/images/banner.jpg"},
+    {name: "../../../assets/images/banner.jpg"},
+    {name: "../../../assets/images/banner.jpg"},
+    {name: "../../../assets/images/banner.jpg"},
+    {name: "../../../assets/images/banner.jpg"},
   ]
+  movie: number = 8;
+  movieArray: any[] = new Array(this.movie);
 
 }
