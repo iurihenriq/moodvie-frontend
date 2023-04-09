@@ -3,7 +3,7 @@
     <p>Se sentindo <span class="label-mood">{{mood}}</span></p>
     <a>Alterar sentimento</a>
   </div>
-  <div>
+  <div class="container-recommender">
     <div class="movie-serie">
       <a href="">Filme</a>
       <a href="">Série</a>
@@ -43,8 +43,9 @@
       </div>
     </div>
   </div>
+  <iframe width="100%" class="trailer" height="100%" src="https://www.youtube.com/embed/fbS0efVvkVU" title="Batman |  Teaser Trailer Legendado DC FanDome" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-  <div class="container historic">
+  <!-- <div class="container historic">
     <div class="flex">
       <p>Histórico</p>
       <div class="navigate">
@@ -53,8 +54,7 @@
       </div>
     </div>
     <div class="container-movies">
-      <!-- <div *ngFor="let movie of movies" [style.background-image]="'url('+ movie.name + ')'" class="movie-historic"></div> -->
       <img class="movie" [src]="banner" alt="movie" *ngFor="let star of movieArray">
     </div>
-  </div>
+  </div> -->
 </div>

@@ -1,6 +1,6 @@
 @import "./../../../assets/styles/colors";
-@import './../../../assets/styles/fonts-size';
-@import './../../../assets/styles/sizes';
+@import "./../../../assets/styles/fonts-size";
+@import "./../../../assets/styles/sizes";
 
 .content {
   display: flex;
@@ -10,37 +10,37 @@
   .title-card {
     font-size: $font-size-large;
     font-weight: 500;
+    color: $font-color-black;
   }
 
   .infos {
     display: flex;
     flex-direction: column;
     gap: $gap-medium;
+
+    .title,
+    .title-infos {
+      color: $font-color-gray;
+    }
+
+    .amount {
+      color: $primary-color;
+    }
   }
 }
-
-// .container-infos {
-//   background-color: $background-color;
-//   border-radius: $border-radius-medium;
-//   padding: $padding-large;
-
-//   .title-infos {
-//     font-size: $font-size-small;
-//   }
-// }
 
 .container-infos {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap:  $gap-large;;
+  gap: $gap-large;
 }
 
 .infos {
-    background-color: $background-color;
+  background-color: $background-color;
   border-radius: $border-radius-medium;
   padding: $padding-large;
 
-    .title-infos {
+  .title-infos {
     font-size: $font-size-small;
   }
 }
@@ -48,12 +48,95 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  .assisted,
+  .evaluated {
+    border-right: 2px $background-card solid;
+    padding-right: $padding-medium;
+  }
+  .favorites,
+  .nsei {
+    padding-left: $padding-medium;
+  }
+
+  .assisted,
+  .favorites {
+    border-bottom: 2px $background-card solid;
+    padding-bottom: $padding-medium;
+  }
 }
 
 .amount {
-  font-size: calc($font-size-large*2) ;
+  font-size: calc($font-size-large * 2);
 }
 
 .title {
   font-size: $font-size-tiny;
+}
+
+@media (max-width: 1800px) {
+  .container-infos {
+    display: flex;
+    gap: $gap-large;
+    flex-direction: column;
+
+    .container {
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+
+      .assisted,
+      .evaluated {
+        border-right: 2px solid $background-card;
+        padding-right: $padding-medium;
+      }
+      .favorites,
+      .nsei {
+        padding: 0 $padding-medium;
+      }
+
+      .assisted,
+      .favorites {
+        border-bottom: 0;
+      }
+
+      .evaluated {
+        padding-left: $padding-medium;
+      }
+
+      .favorites {
+        border-right: 2px solid $background-card;
+      }
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    text-align: start !important;
+
+    .assisted,
+    .evaluated,
+    .favorites,
+    .nsei {
+      padding: 0 !important;
+    }
+
+    .assisted,
+    .evaluated {
+      border-right: 2px $background-card solid;
+    }
+
+    .favorites,
+    .nsei {
+      padding-left: $padding-medium !important;
+      border: 0 !important;
+    }
+
+    .assisted,
+    .favorites {
+      padding-bottom: $padding-medium !important;
+      border-bottom: 2px $background-card solid !important;
+    }
+  }
 }

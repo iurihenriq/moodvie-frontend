@@ -5,29 +5,47 @@
       <p id="title-logo">Moodvie</p>
     </div>
     <nav class="sidebar">
-      <ul>
+      <ul class="flex-nav">
+        <div>
+          <li>
+            <a routerLink="/recommender" routerLinkActive="active" class="item-menu display-none-1500">
+              Recomendador
+            </a>
+            <a routerLink="/recommender" routerLinkActive="active" class="item-menu display-block-full"><mat-icon>movie_filter</mat-icon>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/library" routerLinkActive="active" class="item-menu display-none-1500">
+              Biblioteca
+            </a>
+            <a routerLink="/library" routerLinkActive="active" class="item-menu display-block-full">
+              <mat-icon>view_carousel</mat-icon>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/statistics" routerLinkActive="active" class="item-menu display-block-950">
+              <mat-icon>assessment</mat-icon>
+            </a>
+          </li>
+        </div>
         <li>
-          <a routerLink="/recommender" routerLinkActive="active" class="item-menu">
-            Recomendador
-          </a>
-        </li>
-        <li>
-          <a routerLink="/library" routerLinkActive="active" class="item-menu">
-            Biblioteca
+          <a routerLink="/statistics" routerLinkActive="active" class="item-menu settings">
+            <mat-icon>settings</mat-icon>
           </a>
         </li>
       </ul>
     </nav>
+
   </div>
   <main role="main" class="card">
     <div class="recommender-library">
       <router-outlet></router-outlet>
     </div>
-    <div class="more-info">
-      <div class="profile">
+    <div class="more-info display-none-950">
+      <div class="profile ">
         <app-profile-circle></app-profile-circle>
       </div>
-      <div class="statistics">
+      <div class="statistics ">
         <app-statistics></app-statistics>
       </div>
     </div>

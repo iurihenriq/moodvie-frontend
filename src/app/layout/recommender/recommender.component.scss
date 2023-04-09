@@ -1,30 +1,45 @@
 @import "./../../../assets/styles/colors";
-@import "./../../../assets/styles//fonts-size";
+@import "./../../../assets/styles/fonts-size";
 @import "./../../../assets/styles/sizes";
+
+.display-block-800 {
+  display: none;
+}
 
 .content {
   color: $color-font-card;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
   flex-direction: column;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+
+  .container-recommender {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .trailer {
+    border-radius: 0 0 $border-radius-large $border-radius-large;
+  }
 
   .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: $secondary-color;
-    border-radius: $border-radius-large;
+    border-radius: $border-radius-large $border-radius-large 0 0;
     width: 100%;
     padding: $padding-large;
     box-sizing: border-box;
   }
 
   .mood {
+    border-radius: $border-radius-large;
+    margin-bottom: $margin-large;
+
     .label-mood {
       color: $details-color;
     }
@@ -44,11 +59,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: calc($gap-medium * 2);
     margin-bottom: 10px;
     font-size: $font-size-small;
 
     a {
+      padding-left: calc($gap-medium * 2);
       text-decoration: none;
       color: $color-font-card;
     }
@@ -74,7 +89,7 @@
       background-position: center;
       width: 100%;
       height: 100%;
-      border-radius: $border-radius-large 0 0 $border-radius-large;
+      border-radius: $border-radius-large 0 0 0;
     }
 
     .streaming {
@@ -153,6 +168,8 @@
 
     .next {
       display: flex;
+      align-items: center;
+      justify-content: center;
       background-color: $details-color;
       font-size: $font-size-small;
     }
@@ -183,7 +200,7 @@
       justify-content: space-between;
     }
 
-    .navigate a{
+    .navigate a {
       color: $color-font-card;
     }
 
@@ -197,5 +214,45 @@
       grid-template-columns: repeat(8, 1fr);
       gap: calc($margin-small * 3);
     }
+  }
+}
+
+@media (max-width: 800px) {
+  .mood {
+    padding: $padding-medium !important;
+
+    p {
+      font-size: $font-size-small !important;
+    }
+    a {
+      font-size: 1.5rem !important;
+      padding: calc($font-size-small * 0.5) !important;
+    }
+  }
+
+  .title {
+    font-size: $font-size-small !important;
+  }
+
+  .sinopse {
+    font-size: 1.5rem !important;
+  }
+
+  .gender {
+    font-size: calc($font-size-medium/2) !important;
+  }
+
+  .button {
+    font-size: 1.5rem !important;
+    padding: calc($font-size-small * 0.5) !important;
+  }
+
+  .watched,
+  .save {
+    height: 25px !important;
+  }
+
+  .movie-serie {
+    font-size: 1.5rem !important;
   }
 }
