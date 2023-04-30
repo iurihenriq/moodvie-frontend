@@ -210,14 +210,14 @@ ul {
   @media (max-width: 600px) {
     .content {
       padding: 0 !important;
-      height: auto;
+      height: auto !important;
 
       grid-template-columns: 100%;
       grid-template-rows: 10% 90%;
       grid-auto-flow: column dense;
 
       .card {
-        height: calc(100vh - 70px);
+        height: calc(100vh - 70px) !important;
         overflow: auto;
         grid-row-start: 1;
         grid-row-end: 3;
