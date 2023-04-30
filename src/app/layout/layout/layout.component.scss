@@ -215,6 +215,9 @@ ul {
   }
 
   @media (max-width: 600px) {
+    main {
+      overflow: auto;
+    }
     .content {
       padding: 0 !important;
       height: calc(100vh - 70px);
@@ -232,6 +235,8 @@ ul {
       }
 
       .nav {
+        position: sticky;
+        bottom: 0;
         padding: 0;
         grid-row-start: 3;
         grid-row-end: 5;
