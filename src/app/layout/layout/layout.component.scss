@@ -217,12 +217,12 @@ ul {
       grid-auto-flow: column dense;
 
       .card {
-        height: calc(100vh - 70px) !important;
+        height: 100vh !important;
         overflow: auto;
         grid-row-start: 1;
         grid-row-end: 3;
         border-radius: 0;
-        padding: 0;
+        padding: 0 0 70px 0;
         background-color: $primary-color;
       }
 
