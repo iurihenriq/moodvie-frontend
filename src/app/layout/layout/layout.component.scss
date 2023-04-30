@@ -17,13 +17,6 @@ ul {
 .sidebar {
   height: 100%;
 
-  .flex-nav {
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-  }
-
   .settings {
     padding-top: 14px;
     mat-icon {
@@ -215,9 +208,6 @@ ul {
   }
 
   @media (max-width: 600px) {
-    main {
-      overflow: auto;
-    }
     .content {
       padding: 0 !important;
       height: calc(100vh - 70px);
@@ -227,6 +217,7 @@ ul {
       grid-auto-flow: column dense;
 
       .card {
+        overflow: auto;
         grid-row-start: 1;
         grid-row-end: 3;
         border-radius: 0;
@@ -246,20 +237,27 @@ ul {
         .container-logo {
           display: none;
         }
-        .flex-nav {
-          flex-direction: row;
+
+        .sidebar {
+          height: auto !important;
+        }
+
+        ul {
+          width: 100% !important;
+        }
+
+        .flex-itens {
+          background-color: $background-card;
           width: 100%;
+          flex-direction: row;
+          display: flex;
+          justify-content: space-around;
 
-          .flex-itens {
-            width: 100%;
-            flex-direction: row;
-            justify-content: space-around;
-
-            a {
-              padding: calc($padding-small * 3);
-            }
+          a {
+            padding: calc($padding-small * 3);
           }
         }
+
         .icon-list {
           display: flex !important;
           align-items: center !important;
