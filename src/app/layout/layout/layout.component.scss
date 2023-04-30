@@ -236,6 +236,7 @@ ul {
 
       .nav {
         position: fixed;
+        z-index: 10;
         width: 100%;
         bottom: 0;
         padding: 0;
@@ -250,10 +251,6 @@ ul {
           width: 100%;
 
           .flex-itens {
-            position: fixed;
-            bottom: 0;
-            z-index: 10;
-            display: flex;
             width: 100%;
             flex-direction: row;
             justify-content: space-around;
