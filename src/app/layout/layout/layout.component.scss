@@ -25,11 +25,16 @@ ul {
   }
 
   .settings {
+    padding-top: 14px;
     mat-icon {
       height: 40px;
       width: 40px;
       font-size: calc($font-size-medium * 2);
     }
+  }
+
+  .settings-display-none {
+    display: none;
   }
 
   .item-menu {
@@ -46,7 +51,9 @@ ul {
 
   li {
     display: flex;
-    padding-bottom: 15px;
+    a {
+      padding-bottom: 15px;
+    }
   }
 }
 
@@ -94,6 +101,7 @@ ul {
   background-color: $background-color;
   display: grid;
   width: 100%;
+  max-width: 1920px;
   height: 100vh;
   grid-template-columns: 15% 85%;
   padding: $padding-large;
@@ -203,6 +211,57 @@ ul {
       height: 40px !important;
       width: 40px !important;
       font-size: calc($font-size-medium * 2) !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .content {
+      padding: 0 !important;
+      height: calc(100vh - 70px);
+
+      grid-template-columns: 100%;
+      grid-template-rows: 10% 90%;
+      grid-auto-flow: column dense;
+
+      .card {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        border-radius: 0;
+        padding: 0;
+        background-color: $primary-color;
+      }
+
+      .nav {
+        padding: 0;
+        grid-row-start: 3;
+        grid-row-end: 5;
+
+        .container-logo {
+          display: none;
+        }
+        .flex-nav {
+          flex-direction: row;
+          width: 100%;
+
+          .flex-itens {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+
+            a {
+              padding: calc($padding-small * 3);
+            }
+          }
+        }
+        .icon-list {
+          display: flex !important;
+          align-items: center !important;
+        }
+        li {
+          padding: 0;
+        }
+      }
     }
   }
 }

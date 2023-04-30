@@ -1,12 +1,49 @@
 @import "./../../../../assets/styles/colors.scss";
-@import './../../../../assets/styles/fonts-size';
-@import './../../../../assets/styles/sizes';
+@import "./../../../../assets/styles/fonts-size";
+@import "./../../../../assets/styles/sizes";
 
-.circle {
-  // font-size: $font-size-large;
-  border-radius: 50%;
-  padding: 10px;
-  border: 2px solid $details-color;
-  color: $details-color;
-  cursor: pointer;
+$menu-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+.menu-container {
+  position: relative;
+  display: inline-block;
+
+  .menu-button {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 50%;
+    padding: 10px;
+    border: 2px solid $details-color;
+    color: $details-color;
+    cursor: pointer;
+  }
+
+  .menu-list {
+    font-size: $font-size-small;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $details-color;
+    padding: 10px;
+    border-radius: $border-radius-small;
+    box-shadow: $menu-box-shadow;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    li {
+      margin-bottom: 5px;
+      list-style: none;
+
+      a {
+        color: $color-font-card;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &:hover .menu-list {
+    opacity: 1;
+    visibility: visible;
+  }
 }

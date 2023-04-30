@@ -16,8 +16,12 @@
             <div class="title-stars-streaming">
               <div class="title-stars">
                 <p class="title">{{title}}</p>
-                <div>
-                  <img src="./../../../assets/images/star.svg" *ngFor="let star of starsArray">
+                <div class="container-stars">
+                  <img class="star-none" src="./../../../assets/images/star.svg" *ngFor="let star of starsArray">
+                  <div class="noteMoovie noteMoovie-none">
+                    <p><span>1</span><span>/</span><span>5</span></p>
+                    <img src="./../../../assets/images/star.svg">
+                  </div>
                 </div>
               </div>
               <a [href]="linkStreaming" target="_blank">
@@ -43,7 +47,7 @@
       </div>
     </div>
   </div>
-  <iframe width="100%" class="trailer" height="100%" src="https://www.youtube.com/embed/fbS0efVvkVU" title="Batman |  Teaser Trailer Legendado DC FanDome" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe width="100%" class="trailer" height="100%" src="https://www.youtube.com/embed/fbS0efVvkVU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
   <!-- <div class="container historic">
     <div class="flex">

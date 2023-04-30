@@ -6,33 +6,38 @@
     </div>
     <nav class="sidebar">
       <ul class="flex-nav">
-        <div>
+        <div class="flex-itens">
           <li>
             <a routerLink="/recommender" routerLinkActive="active" class="item-menu display-none-1500">
               Recomendador
             </a>
-            <a routerLink="/recommender" routerLinkActive="active" class="item-menu display-block-full"><mat-icon>movie_filter</mat-icon>
+            <a routerLink="/recommender" routerLinkActive="active" class="item-menu display-block-full icon-list"><mat-icon>movie_filter</mat-icon>
             </a>
           </li>
           <li>
             <a routerLink="/library" routerLinkActive="active" class="item-menu display-none-1500">
               Biblioteca
             </a>
-            <a routerLink="/library" routerLinkActive="active" class="item-menu display-block-full">
+            <a routerLink="/library" routerLinkActive="active" class="item-menu display-block-full icon-list">
               <mat-icon>view_carousel</mat-icon>
             </a>
           </li>
           <li>
-            <a routerLink="/statistics" routerLinkActive="active" class="item-menu display-block-950">
+            <a routerLink="/statistics" routerLinkActive="active" class="item-menu display-block-950 icon-list">
               <mat-icon>assessment</mat-icon>
             </a>
           </li>
+          <li>
+            <a routerLinkActive="active" class="display-block-950">
+              <app-profile-circle></app-profile-circle>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/statistics" routerLinkActive="active" class="item-menu settings icon-list">
+              <mat-icon>settings</mat-icon>
+            </a>
+          </li>
         </div>
-        <li>
-          <a routerLink="/statistics" routerLinkActive="active" class="item-menu settings">
-            <mat-icon>settings</mat-icon>
-          </a>
-        </li>
       </ul>
     </nav>
 
