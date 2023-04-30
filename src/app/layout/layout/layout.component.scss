@@ -235,7 +235,8 @@ ul {
       }
 
       .nav {
-        position: sticky;
+        position: fixed;
+        width: 100%;
         bottom: 0;
         padding: 0;
         grid-row-start: 3;
@@ -249,6 +250,8 @@ ul {
           width: 100%;
 
           .flex-itens {
+            position: fixed;
+            bottom: 0;
             display: flex;
             width: 100%;
             flex-direction: row;
