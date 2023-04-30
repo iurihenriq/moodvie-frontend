@@ -252,6 +252,7 @@ ul {
           .flex-itens {
             position: fixed;
             bottom: 0;
+            z-index: 10;
             display: flex;
             width: 100%;
             flex-direction: row;
