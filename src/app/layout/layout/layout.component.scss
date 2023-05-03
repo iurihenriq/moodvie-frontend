@@ -10,7 +10,7 @@ ul {
   display: none;
 }
 
-.display-block-950 {
+.display-block-1000 {
   display: none;
 }
 
@@ -176,12 +176,12 @@ ul {
   }
 }
 
-@media (max-width: 950px) {
-  .display-none-950 {
+@media (max-width: 1000px) {
+  .display-none-1000 {
     display: none !important;
   }
 
-  .display-block-950 {
+  .display-block-1000 {
     display: block !important;
   }
 
@@ -224,6 +224,10 @@ ul {
         border-radius: 0;
         padding: 0 0 70px 0;
         background-color: $primary-color;
+
+        .recommender-library {
+          padding: calc($padding-small * 3);
+        }
       }
 
       .nav {

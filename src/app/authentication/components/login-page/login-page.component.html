@@ -1,0 +1,28 @@
+<div class="content">
+  <form [formGroup]="loginForm">
+    <div class="container-card">
+      <h1 class="title-page">Login</h1>
+
+      <div class="form">
+        <label class="input-wrapper">
+          <input type="text" formControlName="username" placeholder=" " required />
+          <span class="placeholder">Usuário</span>
+        </label>
+
+        <label class="input-wrapper">
+          <input type="password" formControlName="password" placeholder=" " required />
+          <span class="placeholder">Senha</span>
+        </label>
+        <p class="forgot-password">esqueceu sua senha? <span>Clique aqui</span></p>
+      </div>
+
+
+      <div class="container-buttons">
+        <a (click)="login()" class="button next">Entrar</a>
+        <span>Cadastrar</span>
+      </div>
+
+    </div>
+
+  </form>
+</div>

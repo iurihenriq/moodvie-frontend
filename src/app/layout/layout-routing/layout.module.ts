@@ -7,14 +7,21 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LibraryComponent } from '../library/library.component';
 import { MaterialModule } from 'src/app/shared/material-module/material.module';
 import { SharedModule } from './../../shared/shared.module';
+import { AuthenticationModule } from 'src/app/authentication/module/authentication/authentication.module';
 
 @NgModule({
-  declarations: [LayoutComponent, RecommenderComponent, LibraryComponent, StatisticsComponent],
+  declarations: [
+    LayoutComponent,
+    RecommenderComponent,
+    LibraryComponent,
+    StatisticsComponent,
+  ],
   imports: [
     CommonModule,
     LayoutRoutingModule,
+    AuthenticationModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
   ],
 })
 export class LayoutModule {}

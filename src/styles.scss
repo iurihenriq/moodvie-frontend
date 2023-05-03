@@ -6,3 +6,25 @@
 html, body { height: 100%; font-size: 62.5%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 * { margin: 0; padding: 0; }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #ababab #f3f3f3;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #829694;
+    border-radius: 4px;
+  }

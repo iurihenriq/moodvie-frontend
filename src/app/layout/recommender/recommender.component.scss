@@ -6,6 +6,24 @@
   display: none;
 }
 
+#no-trailer {
+  width: 100%;
+  height: 100%;
+  background-color: $secondary-color;
+  border-radius: 0 0 $border-radius-large $border-radius-large;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  p {
+    font-size: $font-size-medium;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $details-color;
+  }
+}
+
 .content {
   color: $color-font-card;
   position: relative;
@@ -31,7 +49,7 @@
     justify-content: space-between;
     background-color: $secondary-color;
     border-radius: $border-radius-large $border-radius-large 0 0;
-    width: 100%;
+    min-width: 100%;
     padding: $padding-large;
     box-sizing: border-box;
   }
@@ -140,6 +158,8 @@
 
     .sinopse {
       font-size: $font-size-small;
+      max-height: 55px;
+      overflow-x: auto;
     }
 
     .title-stars {
@@ -150,7 +170,7 @@
 
     .title {
       font-size: $font-size-large;
-      max-width: 136px;
+      max-width: 295px;
       font-weight: 500;
     }
 
@@ -164,6 +184,10 @@
       align-items: center;
       justify-content: end;
       gap: calc($gap-small * 3);
+
+      a {
+        cursor: pointer;
+      }
     }
 
     .button {
@@ -273,6 +297,7 @@
 
   .sinopse {
     font-size: 1.5rem !important;
+    max-height: 65px !important;
   }
 
   .gender {
@@ -329,5 +354,8 @@
   }
   .trailer {
     border-radius: 0 0 $border-radius-medium $border-radius-medium !important;
+  }
+  .content-moovie {
+    padding: $padding-medium !important;
   }
 }

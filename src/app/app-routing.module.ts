@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './layout/layout/layout.component';
+import { LoginPageComponent } from './authentication/components/login-page/login-page.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'layout/recommender', pathMatch: 'full' },
-  // { path: 'layout', component: LayoutComponent },
-  // outras rotas aqui
+  { path: 'login', component: LoginPageComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -33,7 +33,9 @@
         </div>
 
         <div class="sinopse-gender">
-          <p class="sinopse">{{sinopse}}</p>
+          <div class="sinopse">
+            <p >{{sinopse}}</p>
+          </div>
           <div class="gender">
             <p *ngFor="let gender of genders">{{gender.name}}</p>
           </div>
@@ -42,12 +44,14 @@
         <div class="buttons">
           <a class="button watched" href=""><mat-icon>remove_red_eye</mat-icon></a>
           <a class="button save" href=""><mat-icon>bookmark</mat-icon></a>
-          <a class="button next" href="">Próximo <mat-icon>navigate_next</mat-icon></a>
+          <a class="button next" (click)="findMovie()">Próximo <mat-icon>navigate_next</mat-icon></a>
         </div>
       </div>
     </div>
   </div>
-  <iframe width="100%" class="trailer" height="100%" src="https://www.youtube.com/embed/fbS0efVvkVU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <iframe *ngIf="viewTrailer" width="100%" class="trailer" height="100%" [src]="videoUrl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div id="no-trailer" *ngIf="!viewTrailer"><p>o trailer não está disponivel :/</p></div>
+
 
   <!-- <div class="container historic">
     <div class="flex">

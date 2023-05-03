@@ -11,7 +11,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from './shared/shared.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './layout/layout-routing/layout.module';
-import { StatisticsComponent } from './layout/statistics/statistics.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -28,6 +28,8 @@ export function createTranslateLoader(http: HttpClient) {
     LayoutModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

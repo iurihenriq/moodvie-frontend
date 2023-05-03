@@ -1,0 +1,122 @@
+@import "./../../../../assets/styles/colors.scss";
+@import "./../../../../assets/styles/fonts-size";
+@import "./../../../../assets/styles/sizes";
+
+.content {
+  font-size: $font-size-medium;
+  background-image: url("./../../../../assets/images/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+
+  form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $gap-large;
+    background-color: $background-card;
+    padding: $padding-large;
+    border-radius: $border-radius-large;
+
+    .container-buttons {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      span {
+        margin-top: $margin-medium;
+        font-size: 1.5rem;
+        color: $details-color;
+        cursor: pointer;
+      }
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .input-wrapper:nth-child(1) {
+        margin-bottom: $margin-large;
+      }
+
+      .forgot-password {
+        margin-top: $margin-medium;
+        color: $primary-color;
+        font-size: 1.5rem;
+
+        span {
+          color: $details-color;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .title-page {
+      color: $primary-color;
+    }
+  }
+
+  .button {
+    padding: $padding-medium calc($padding-large * 2);
+    color: $color-font-card;
+    border-radius: $border-radius-medium;
+    background-color: $details-color;
+    font-size: $font-size-small;
+    cursor: pointer;
+  }
+}
+
+.input-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.input-wrapper input {
+  font-size: 16px;
+  border: 3px solid $primary-color;
+  border-radius: 10px;
+  padding: 10px 15px;
+  background-color: $background-card;
+  width: 250px;
+}
+
+.input-wrapper .placeholder {
+  position: absolute;
+  top: 13px;
+  left: 15px;
+  color: #777;
+  font-size: 16px;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-wrapper input:focus + .placeholder,
+.input-wrapper input:not(:placeholder-shown) + .placeholder {
+  top: -15px;
+  left: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: $primary-color;
+}
+
+@media (max-width: 600px) {
+  .input-wrapper input {
+    width: 220px;
+  }
+
+  .container-card {
+    padding: $padding-medium;
+  }
+}
