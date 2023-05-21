@@ -5,10 +5,11 @@ import { LayoutRoutingModule } from 'src/app/layout/layout-routing/layout-routin
 import { MaterialModule } from 'src/app/shared/material-module/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterPageComponent } from '../../components/register-page/register-page.component';
 
 
 @NgModule({
-  declarations: [LoginPageComponent],
+  declarations: [LoginPageComponent, RegisterPageComponent],
   imports: [
     FormsModule,
     ReactiveFormsModule,

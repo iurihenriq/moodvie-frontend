@@ -18,6 +18,5 @@ export class AuthenticationService {
   authenticate(loginInfo: any) {
     console.log(loginInfo)
     return this.http.post(`${environment.apiUrl}login`, loginInfo);
-      // .pipe<any>(map((response: any) => (this.bearerToken = response.token)));
   }
 }
