@@ -10,37 +10,38 @@
   background-position: center;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
+
+  .form-container {
+    filter: drop-shadow(-7px 2px 7px rgba(0, 0, 0, 0.65));
+    .form-container-inner {
+      position: absolute;
+      width: 48%;
+      height: 100vh;
+      right: 0;
+      top: 0;
+
+      clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 1% 100%);
+      background: linear-gradient(180deg, #1b615c 22.4%, $primary-color 100%);
+    }
+  }
 
   form {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    padding-left: 35%;
   }
 
   .container-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     gap: $gap-large;
-    background-color: $background-card;
     padding: $padding-large;
     border-radius: $border-radius-large;
-
-    .container-buttons {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-
-      span {
-        margin-top: $margin-medium;
-        font-size: 1.5rem;
-        color: $details-color;
-        cursor: pointer;
-      }
-    }
 
     .form {
       display: flex;
@@ -51,64 +52,95 @@
       .input-wrapper:nth-child(1) {
         margin-bottom: $margin-large;
       }
-
-      .forgot-password {
-        margin-top: $margin-medium;
-        color: $primary-color;
-        font-size: 1.5rem;
-
-        span {
-          color: $details-color;
-          cursor: pointer;
-        }
-      }
     }
 
-    .title-page {
-      color: $primary-color;
+    .forgot-password {
+      color: $background-card;
+      font-size: 1.5rem;
+
+      span {
+        color: $details-color;
+        cursor: pointer;
+      }
     }
   }
 
   .button {
-    padding: $padding-medium calc($padding-large * 2);
-    color: $color-font-card;
-    border-radius: $border-radius-medium;
-    background-color: $details-color;
+    padding: calc($padding-small * 1.5) calc($padding-large * 1.5);
+    color: $details-color;
+    border-radius: calc($border-radius-medium * 2);
+    background-color: transparent;
+    border: solid 2px $details-color;
     font-size: $font-size-small;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: $details-color;
+      color: $color-font-card;
+    }
   }
 }
 
 .input-wrapper {
   position: relative;
   display: inline-block;
-}
 
-.input-wrapper input {
-  font-size: 16px;
-  border: 3px solid $primary-color;
-  border-radius: 10px;
-  padding: 10px 15px;
-  background-color: $background-card;
-  width: 250px;
-}
+  input {
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid $background-card;
+    padding: 10px 15px;
+    background-color: transparent;
+    width: 310px;
+    transition: border-color 0.2s ease-in-out;
+    color: $background-card;
+    text-align: left;
 
-.input-wrapper .placeholder {
-  position: absolute;
-  top: 13px;
-  left: 15px;
-  color: #777;
-  font-size: 16px;
-  transition: all 0.2s ease-in-out;
-}
+    &:focus {
+      outline: none;
+      border-color: $details-color;
+    }
 
-.input-wrapper input:focus + .placeholder,
-.input-wrapper input:not(:placeholder-shown) + .placeholder {
-  top: -15px;
-  left: 8px;
-  font-size: 12px;
-  font-weight: 500;
-  color: $primary-color;
+    &::placeholder {
+      color: $background-card;
+    }
+  }
+
+  .placeholder {
+    position: absolute;
+    top: 13px;
+    left: 15px;
+    color: $background-card;
+    font-size: 16px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: $background-card;
+  }
+
+  input:focus + .placeholder,
+  input:not(:placeholder-shown) + .placeholder {
+    top: -15px;
+    left: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: $details-color;
+  }
+
+  .icon-visible {
+    color: $details-color;
+  }
+
+  .icon-hidden {
+    color: $background-card;
+  }
 }
 
 @media (max-width: 600px) {
@@ -118,5 +150,49 @@
 
   .container-card {
     padding: $padding-medium;
+  }
+}
+
+.container-background {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .information {
+    background: rgba(238, 237, 236, 0.85);
+    width: 50rem;
+    padding: 30px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 60px;
+    flex-direction: column;
+    font-weight: 300;
+
+    .welcome {
+      font-size: calc(1.3 * $font-size-large);
+      width: 400px;
+
+      span {
+        font-weight: bold;
+        color: $primary-color;
+      }
+    }
+
+    .without-account {
+      font-size: calc(1.3 * $font-size-medium);
+      width: 400px;
+
+      a {
+        cursor: pointer;
+        color: $details-color;
+      }
+    }
+
+    img {
+      width: 15%;
+    }
   }
 }

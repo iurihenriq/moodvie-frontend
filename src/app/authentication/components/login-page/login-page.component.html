@@ -1,28 +1,44 @@
 <div class="content">
-  <form [formGroup]="loginForm">
-    <div class="container-card">
-      <h1 class="title-page">Login</h1>
 
-      <div class="form">
-        <label class="input-wrapper">
-          <input type="text" formControlName="username" placeholder=" " required />
-          <span class="placeholder">Usuário</span>
-        </label>
+  <div class="form-container">
+    <div class="form-container-inner">
+      <form [formGroup]="loginForm">
+        <div class="container-card">
+          <div class="form">
+            <label class="input-wrapper">
+              <input type="text" formControlName="username" placeholder=" " required />
+              <span class="placeholder">Usuário</span>
+            </label>
 
-        <label class="input-wrapper">
-          <input type="password" formControlName="password" placeholder=" " required />
-          <span class="placeholder">Senha</span>
-        </label>
-        <p class="forgot-password">esqueceu sua senha? <span>Clique aqui</span></p>
-      </div>
+            <label class="input-wrapper">
+              <input type="{{ mostrarSenha ? 'text' : 'password' }}" formControlName="password" placeholder=" " required />
+              <span class="placeholder">Senha</span>
+              <span class="icon" (click)="togglePasswordVisibility()">
+                <i class="material-icons" [ngClass]="mostrarSenha ? 'icon-visible' : 'icon-hidden'">{{ mostrarSenha ? 'visibility_off' : 'visibility' }}</i>
+              </span>
+            </label>
+          </div>
+          <p class="forgot-password">esqueceu sua senha? <span>Clique aqui</span></p>
 
-
-      <div class="container-buttons">
-        <a (click)="login()" class="button next">Entrar</a>
-        <span>Cadastrar</span>
-      </div>
-
+          <button (click)="login()" class="button next">Entrar</button>
+        </div>
+      </form>
     </div>
+  </div>
 
-  </form>
+  <div class="container-background">
+    <div class="information">
+      <img src="../../../../assets/images/logo.svg" alt="">
+      <div class="welcome">
+        <p>Olá,</p>
+        <p>bem-vindo de volta</p>
+        <p>ao <span>Moodvie</span></p>
+      </div>
+
+      <div class="without-account">
+        <p>Ainda não possui uma conta?</p>
+        <a>Cadastre-se</a>
+      </div>
+    </div>
+  </div>
 </div>
