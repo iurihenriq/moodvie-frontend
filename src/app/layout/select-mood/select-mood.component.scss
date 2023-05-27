@@ -1,0 +1,71 @@
+@import "./../../../assets/styles/colors";
+@import "./../../../assets/styles/fonts-size";
+@import "./../../../assets/styles/sizes";
+
+.content {
+  color: $color-font-card;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: $gap-large;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: $padding-large;
+
+  .title {
+    max-width: 600px;
+    text-align: center;
+    font-size: 3.2rem;
+    font-weight: 500;
+  }
+
+  .detail {
+    width: 200px;
+    height: 1px;
+    background-color: $details-color;
+  }
+
+  .subtitle {
+    font-size: $font-size-large;
+  }
+
+  .container-moods {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: 100%;
+    width: 100%;
+    gap: 50px;
+    margin: 0 50px;
+
+    .container-mood {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+      background-color: $secondary-color;
+      border: 1px solid $details-color;
+      border-radius: $border-radius-medium;
+      padding: 10px;
+      transition: all 0.2s ease;
+
+      .emoji {
+        font-size: calc($font-size-medium * 2);
+      }
+
+      .title-mood {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 1.6rem;
+      }
+
+      &:hover {
+        scale: 1.1;
+        background-color: $details-color;
+      }
+    }
+  }
+}

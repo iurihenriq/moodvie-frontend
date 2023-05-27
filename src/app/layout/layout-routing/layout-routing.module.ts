@@ -4,6 +4,7 @@ import { LayoutComponent } from '../layout/layout.component';
 import { RecommenderComponent } from '../recommender/recommender.component';
 import { LibraryComponent } from '../library/library.component';
 import { StatisticsComponent } from '../statistics/statistics.component';
+import { SelectMoodComponent } from '../select-mood/select-mood.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'recommender', component: RecommenderComponent },
       { path: 'library', component: LibraryComponent },
       { path: 'statistics', component: StatisticsComponent },
+      { path: 'select-mood', component: SelectMoodComponent },
     ],
   },
 ];
