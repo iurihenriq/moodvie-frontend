@@ -67,6 +67,8 @@
     }
     a {
       font-size: $font-size-small;
+      text-decoration: none;
+      color: $color-font-card;
       padding: $padding-medium;
       border-radius: $border-radius-medium;
       background-color: $details-color;

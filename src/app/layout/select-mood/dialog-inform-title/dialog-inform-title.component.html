@@ -1,0 +1,26 @@
+<div class="content">
+  <p class="title">Selecione um título que você gostou de assistir quando estava <span class="mood">{{mood}}</span></p>
+  <form [formGroup]="selectForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Filme/Série</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="MOOVIE">Filme</mat-option>
+        <mat-option value="SHOW">Série</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Filme/Série</mat-label>
+      <input type="text" placeholder="Escolha um" matInput formControlName="title" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let movie of movies | async" [value]="movie">
+          {{movie}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+  <div class="buttons">
+    <button mat-flat-button class="close" mat-dialog-close>Fechar</button>
+    <button mat-flat-button class="ok" [disabled]="selectForm.invalid">Selecionar</button>
+  </div>
+</div>

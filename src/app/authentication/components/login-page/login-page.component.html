@@ -1,28 +1,59 @@
 <div class="content">
-  <form [formGroup]="loginForm">
-    <div class="container-card">
-      <h1 class="title-page">Login</h1>
 
-      <div class="form">
-        <label class="input-wrapper">
-          <input type="text" formControlName="username" placeholder=" " required />
-          <span class="placeholder">Usuário</span>
-        </label>
+  <div class="form-container">
+    <div class="form-container-inner">
+      <form [formGroup]="loginForm">
+        <div class="container-card">
+          <div class="form">
+            <div class="flex">
+              <label class="input-wrapper">
+                <input type="text" formControlName="username" placeholder=" " required />
+                <span class="placeholder">Usuário</span>
+              </label>
+              <mat-error *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+                Campo usuário é <b>obrigatório</b>
+              </mat-error>
+            </div>
 
-        <label class="input-wrapper">
-          <input type="password" formControlName="password" placeholder=" " required />
-          <span class="placeholder">Senha</span>
-        </label>
-        <p class="forgot-password">esqueceu sua senha? <span>Clique aqui</span></p>
-      </div>
 
+            <div class="flex">
+              <label class="input-wrapper">
+                <input type="{{ mostrarSenha ? 'text' : 'password' }}" formControlName="password" placeholder=" " required />
+                <span class="placeholder">Senha</span>
+                <span class="icon" (click)="togglePasswordVisibility()">
+                  <i class="material-icons" [ngClass]="mostrarSenha ? 'icon-visible' : 'icon-hidden'">
+                    {{ mostrarSenha ? 'visibility_off' : 'visibility' }}
+                  </i>
+                </span>
+              </label>
+              <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                Campo senha é <b>obrigatório</b>
+              </mat-error>
+            </div>
 
-      <div class="container-buttons">
-        <a (click)="login()" class="button next">Entrar</a>
-        <span>Cadastrar</span>
-      </div>
+          </div>
+          <p class="forgot-password">esqueceu sua senha? <span>Clique aqui</span></p>
+
+          <button (click)="login()" class="button" [disabled]="loginForm.invalid">Entrar</button>
+        </div>
+      </form>
 
     </div>
+  </div>
 
-  </form>
+  <div class="container-background">
+    <div class="information">
+      <img src="../../../../assets/images/logo.svg" alt="">
+      <div class="welcome">
+        <p>Olá,</p>
+        <p>bem-vindo de volta</p>
+        <p>ao <span>Moodvie</span></p>
+      </div>
+
+      <div class="without-account">
+        <p>Ainda não possui uma conta?</p>
+        <a routerLink="/register">Cadastre-se</a>
+      </div>
+    </div>
+  </div>
 </div>

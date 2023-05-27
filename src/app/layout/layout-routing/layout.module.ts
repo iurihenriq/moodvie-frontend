@@ -8,6 +8,9 @@ import { LibraryComponent } from '../library/library.component';
 import { MaterialModule } from 'src/app/shared/material-module/material.module';
 import { SharedModule } from './../../shared/shared.module';
 import { AuthenticationModule } from 'src/app/authentication/module/authentication/authentication.module';
+import { SelectMoodComponent } from '../select-mood/select-mood.component';
+import { DialogInformTitleComponent } from '../select-mood/dialog-inform-title/dialog-inform-title.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,9 +18,13 @@ import { AuthenticationModule } from 'src/app/authentication/module/authenticati
     RecommenderComponent,
     LibraryComponent,
     StatisticsComponent,
+    SelectMoodComponent,
+    DialogInformTitleComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     LayoutRoutingModule,
     AuthenticationModule,
     MaterialModule,

@@ -1,0 +1,78 @@
+<div class="content">
+
+  <div class="form-container">
+    <div class="form-container-inner">
+      <form [formGroup]="registerForm">
+        <div class="container-card">
+          <div class="form">
+            <div class="flex">
+              <label class="input-wrapper">
+                <input type="text" formControlName="email" placeholder=" " required />
+                <span class="placeholder">E-mail</span>
+              </label>
+              <mat-error *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+                Campo e-mail é <b>obrigatório</b>
+              </mat-error>
+            </div>
+
+            <div class="flex">
+              <label class="input-wrapper">
+                <input type="text" formControlName="username" placeholder=" " required />
+                <span class="placeholder">Usuário</span>
+              </label>
+              <mat-error *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+                Campo usuário é <b>obrigatório</b>
+              </mat-error>
+            </div>
+            <div class="flex">
+              <label class="input-wrapper">
+                <input type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" placeholder=" " required />
+                <span class="placeholder">Senha</span>
+                <span class="icon" (click)="togglePasswordVisibility()">
+                  <i class="material-icons" [ngClass]="showPassword ? 'icon-visible' : 'icon-hidden'">{{ showPassword ? 'visibility_off' : 'visibility' }}</i>
+                </span>
+              </label>
+              <mat-error *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                Campo senha é <b>obrigatório</b>
+              </mat-error>
+            </div>
+            <div class="flex">
+              <label class="input-wrapper">
+                <input type="{{ showConfirmPassword ? 'text' : 'password' }}" formControlName="confirmPassword" placeholder=" " required />
+                <span class="placeholder">Confirme sua senha</span>
+                <span class="icon" (click)="toggleConfirmPasswordVisibility()">
+                  <i class="material-icons" [ngClass]="showConfirmPassword ? 'icon-visible' : 'icon-hidden'">{{ showConfirmPassword ? 'visibility_off' : 'visibility' }}</i>
+                </span>
+              </label>
+              <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched">
+                Campo confirmar senha é <b>obrigatório</b>
+              </mat-error>
+              <mat-error *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
+                As senhas não coincidem
+              </mat-error>
+            </div>
+
+          </div>
+
+          <button (click)="login()" [disabled]="registerForm.invalid" class="button">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="container-background">
+    <div class="information">
+      <img src="../../../../assets/images/logo.svg" alt="">
+      <div class="welcome">
+        <p>Receba as melhores</p>
+        <p>recomendações de</p>
+        <p>filmes e séries no</p>
+        <p><span>Moodvie</span></p>
+      </div>
+
+      <div class="without-account">
+        <p>Já possui uma conta? <a routerLink="/login">Entrar</a></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,30 +1,89 @@
-@import './assets/styles/colors.scss';
-@import './assets/styles/fonts-size.scss';
-@import './assets/styles/sizes.scss';
-@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+@import "@angular/material/theming";
+@include mat-core();
 
-html, body { height: 100%; font-size: 62.5%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-* { margin: 0; padding: 0; }
+$my-palette: (
+  50: #e0eff1,
+  100: #b1d9dc,
+  200: #7fc1c5,
+  300: #4fa9ac,
+  400: #2e979a,
+  500: #1a8686,
+  600: #197a79,
+  700: #176a69,
+  800: #175a59,
+  900: #153f3c,
+  contrast: (
+    50: #e2f1f1,
+    100: #c5dad7,
+    200: #a4c0bd,
+    300: #82a5a3,
+    400: #69918f,
+    500: #4f7e7c,
+    600: #456f6c,
+    700: #365b59,
+    800: #294746,
+    900: #193231,
+  ),
+);
+
+$custom-app-primary: mat-palette($my-palette, 800);
+$custom-app-secondary: mat-palette($my-palette, 200, 400, 700);
+$custom-app-warn: mat-palette($mat-red);
+
+$custom-theme: mat-light-theme(
+  $custom-app-primary,
+  $custom-app-secondary,
+  $custom-app-warn
+);
+
+@include angular-material-theme($custom-theme);
+
+@import "./assets/styles/colors.scss";
+@import "./assets/styles/fonts-size.scss";
+@import "./assets/styles/sizes.scss";
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+html,
+body {
+  height: 100%;
+  font-size: 62.5%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
 
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #ababab #f3f3f3;
-  }
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #ababab #f3f3f3;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0);
-  }
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #829694;
-    border-radius: 4px;
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: #829694;
+  border-radius: 4px;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

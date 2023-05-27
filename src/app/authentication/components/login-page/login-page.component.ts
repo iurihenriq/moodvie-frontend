@@ -22,6 +22,12 @@ export class LoginPageComponent {
 
   ngOnInit(): void {}
 
+  mostrarSenha = false;
+
+  togglePasswordVisibility() {
+    this.mostrarSenha = !this.mostrarSenha;
+  }
+
   login() {
     this.service.authenticate(this.loginForm.value).subscribe({
       next: (response: any) => {
