@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../../service/authentication.service';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { AuthenticationService } from '../../service/authentication.service';
 
 @Component({
   selector: 'app-login-page',
@@ -20,7 +21,9 @@ export class LoginPageComponent {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //
+  }
 
   mostrarSenha = false;
 
@@ -31,8 +34,7 @@ export class LoginPageComponent {
   login() {
     this.service.authenticate(this.loginForm.value).subscribe({
       next: (response: any) => {
-        alert('token obtido:' + response.token);
-        this.router.navigate(['/recommender']);
+        this.router.navigate(['/recommender']).catch(() => alert('Erro!'));
       },
       error: () => {
         alert('USUÁRIO NÃO ENCONTRADO');
