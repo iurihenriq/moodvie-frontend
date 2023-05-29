@@ -35,6 +35,7 @@
   box-sizing: border-box;
 
   .container-recommender {
+    width: 100%;
     display: flex;
     flex-direction: column;
   }
@@ -65,8 +66,10 @@
     p {
       font-size: $font-size-large;
     }
-    a {
+    button {
+      height: 44px;
       font-size: $font-size-small;
+      border: none;
       text-decoration: none;
       color: $color-font-card;
       padding: $padding-medium;
@@ -186,13 +189,10 @@
       align-items: center;
       justify-content: end;
       gap: calc($gap-small * 3);
-
-      a {
-        cursor: pointer;
-      }
     }
 
     .button {
+      border: none;
       padding: $padding-medium;
       text-decoration: none;
       color: $color-font-card;
@@ -201,6 +201,7 @@
 
     .watched,
     .save {
+      display: flex;
       background-color: $card-buttons;
     }
 
@@ -210,47 +211,6 @@
       justify-content: center;
       background-color: $details-color;
       font-size: $font-size-small;
-    }
-  }
-
-  .historic {
-    display: flex;
-    align-items: start;
-    gap: $gap-medium;
-    flex-direction: column;
-
-    p {
-      font-size: $font-size-small;
-    }
-
-    .movie-historic {
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      height: 200px;
-      border-radius: $border-radius-medium;
-    }
-
-    .flex {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .navigate a {
-      color: $color-font-card;
-    }
-
-    .movie {
-      width: 100%;
-      border-radius: $border-radius-medium;
-    }
-
-    .container-movies {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: calc($margin-small * 3);
     }
   }
 
@@ -287,7 +247,7 @@
     p {
       font-size: $font-size-small !important;
     }
-    a {
+    button {
       font-size: 1.5rem !important;
       padding: calc($font-size-small * 0.5) !important;
     }
@@ -309,11 +269,6 @@
   .button {
     font-size: 1.5rem !important;
     padding: calc($font-size-small * 0.5) !important;
-  }
-
-  .watched,
-  .save {
-    height: 25px !important;
   }
 
   .movie-serie {
