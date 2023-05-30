@@ -1,7 +1,7 @@
 <div class="content">
   <div class="container mood">
     <p>Se sentindo <span class="label-mood">{{mood}}</span></p>
-    <a routerLink="/select-mood">Alterar sentimento</a>
+    <button routerLink="/select-mood">Alterar sentimento</button>
   </div>
   <div class="container-recommender">
     <div class="movie-serie">
@@ -42,27 +42,13 @@
         </div>
 
         <div class="buttons">
-          <a class="button watched" href=""><mat-icon>remove_red_eye</mat-icon></a>
-          <a class="button save" href=""><mat-icon>bookmark</mat-icon></a>
-          <a class="button next" (click)="findMovie()">Próximo <mat-icon>navigate_next</mat-icon></a>
+          <button class="button watched"><mat-icon>remove_red_eye</mat-icon></button>
+          <button class="button save" (click)="openDialogPlaylist()"><mat-icon>bookmark</mat-icon></button>
+          <button class="button next" (click)="findMovie()">Próximo <mat-icon>navigate_next</mat-icon></button>
         </div>
       </div>
     </div>
   </div>
   <iframe *ngIf="viewTrailer" width="100%" class="trailer" height="100%" [src]="videoUrl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   <div id="no-trailer" *ngIf="!viewTrailer"><p>o trailer não está disponivel :/</p></div>
-
-
-  <!-- <div class="container historic">
-    <div class="flex">
-      <p>Histórico</p>
-      <div class="navigate">
-        <a class="next" href=""><mat-icon>navigate_before</mat-icon></a>
-        <a class="next" href=""><mat-icon>navigate_next</mat-icon></a>
-      </div>
-    </div>
-    <div class="container-movies">
-      <img class="movie" [src]="banner" alt="movie" *ngFor="let star of movieArray">
-    </div>
-  </div> -->
 </div>

@@ -56,6 +56,10 @@ body {
   margin: 0;
   padding: 0;
 }
+button {
+  cursor: pointer;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
@@ -77,13 +81,4 @@ body {
 *::-webkit-scrollbar-thumb {
   background-color: #829694;
   border-radius: 4px;
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

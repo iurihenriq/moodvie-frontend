@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RecommenderService } from './service/recommender.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogPlaylistComponent } from './dialog-playlist/dialog-playlist.component';
 
 @Component({
   selector: 'app-recommender',
@@ -38,7 +41,9 @@ export class RecommenderComponent implements OnInit {
 
   constructor(
     private service: RecommenderService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -87,6 +92,14 @@ export class RecommenderComponent implements OnInit {
           this.year = movieDetails.release_date.substring(0, 4);
           this.duration = this.formatDuration(movieDetails.runtime);
         });
+    });
+  }
+
+  openDialogPlaylist() {
+    this.dialog.open(DialogPlaylistComponent, {
+      width: '300px',
+      // data: mood,
+      disableClose: true,
     });
   }
 
