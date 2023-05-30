@@ -109,6 +109,7 @@ ul {
   background-color: $background-card;
   width: 100%;
   box-sizing: border-box;
+  overflow-y: auto;
 
   .recommender-library {
     padding: $padding-large;
@@ -127,7 +128,18 @@ ul {
     box-sizing: border-box;
 
     .profile {
-      align-self: end;
+      position: sticky;
+      background: $background-card;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: end;
+    }
+
+    .statistics {
+      overflow-y: auto;
+      overflow-x: hidden;
+      max-height: calc(100vh - 161px);
     }
   }
 }

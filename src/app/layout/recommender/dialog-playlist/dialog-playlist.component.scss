@@ -1,0 +1,72 @@
+@import "/src/assets/styles/colors.scss";
+@import "/src/assets/styles/fonts-size.scss";
+@import "/src/assets/styles/sizes.scss";
+
+.content {
+  display: flex;
+  flex-direction: column;
+  color: $color-font-card;
+  gap: $gap-large;
+  padding: $padding-large;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+
+  .create-playlist {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: $gap-medium;
+    color: $font-color-black;
+    font-size: 1.4rem;
+  }
+
+  .new-playlist {
+    mat-form-field {
+      width: 100%;
+
+      mat-hint {
+        color: #9e9e9e;
+      }
+    }
+  }
+
+  .title {
+    color: $font-color-black;
+    font-size: $font-size-large;
+  }
+
+  .container-checkbox {
+    max-height: 120px;
+    overflow-y: auto;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .buttons {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: calc($gap-medium + $gap-small);
+
+    button {
+      border: 2px solid $details-color;
+      text-decoration: none;
+      color: #ffffff;
+
+      &:disabled {
+        border: #80808020 solid 1px;
+        background-color: #80808020;
+        color: gray;
+      }
+    }
+    .ok {
+      background-color: $details-color;
+    }
+    .close {
+      color: $details-color;
+    }
+  }
+}

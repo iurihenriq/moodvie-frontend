@@ -11,6 +11,7 @@ import { AuthenticationModule } from 'src/app/authentication/module/authenticati
 import { SelectMoodComponent } from '../select-mood/select-mood.component';
 import { DialogInformTitleComponent } from '../select-mood/dialog-inform-title/dialog-inform-title.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogPlaylistComponent } from '../recommender/dialog-playlist/dialog-playlist.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LibraryComponent,
     StatisticsComponent,
     SelectMoodComponent,
-    DialogInformTitleComponent
+    DialogInformTitleComponent,
+    DialogPlaylistComponent
   ],
   imports: [
     CommonModule,
