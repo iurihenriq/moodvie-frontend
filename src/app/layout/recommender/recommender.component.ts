@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { RecommenderService } from './service/recommender.service';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogPlaylistComponent } from './dialog-playlist/dialog-playlist.component';
+import {Component, OnInit} from '@angular/core';
+import {RecommenderService} from './service/recommender.service';
+import {DomSanitizer} from '@angular/platform-browser';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogPlaylistComponent} from './dialog-playlist/dialog-playlist.component';
 
 @Component({
   selector: 'app-recommender',
@@ -28,13 +27,13 @@ export class RecommenderComponent implements OnInit {
     'Após dois anos espreitando as ruas como Batman, Bruce Wayne se encontra nas profundezas mais sombrias de Gotham City. Com poucos aliados confiáveis, o vigilante solitário se estabelece como a personificação da vingança para a população.';
   genders: any = [];
   movies: any = [
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
+    {name: '../../../assets/images/banner.jpg'},
+    {name: '../../../assets/images/banner.jpg'},
+    {name: '../../../assets/images/banner.jpg'},
+    {name: '../../../assets/images/banner.jpg'},
+    {name: '../../../assets/images/banner.jpg'},
+    {name: '../../../assets/images/banner.jpg'},
+    {name: '../../../assets/images/banner.jpg'},
   ];
   movie: number = 8;
   movieArray: any[] = new Array(this.movie);
@@ -42,9 +41,9 @@ export class RecommenderComponent implements OnInit {
   constructor(
     private service: RecommenderService,
     private sanitizer: DomSanitizer,
-    private dialog: MatDialog,
-    private router: Router
-  ) {}
+    private dialog: MatDialog
+  ) {
+  }
 
   ngOnInit(): void {
     this.findMovie();

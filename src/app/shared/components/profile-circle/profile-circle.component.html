@@ -1,7 +1,9 @@
 <div class="menu-container">
-  <button class="menu-button"><mat-icon>person</mat-icon></button>
+  <button class="menu-button">
+    <mat-icon>person</mat-icon>
+  </button>
   <ul class="menu-list">
-    <li><a href="#" [routerLink]="['/login']">Sair</a></li>
+    <li><a href="#" (click)="logout()">Sair</a></li>
     <!-- <li><a href="#">Item 2</a></li>
     <li><a href="#">Item 3</a></li> -->
   </ul>

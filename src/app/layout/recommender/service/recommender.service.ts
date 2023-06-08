@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,8 @@ export class RecommenderService {
   apiKey = "43e921031ab69189ed0f418f50a7237e";
   language = "pt-BR";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   findMovieListRandom() {
     const page = Math.floor(Math.random() * 500) + 1;
