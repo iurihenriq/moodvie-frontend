@@ -1,22 +1,23 @@
 <div class="content">
   <div class="nav">
     <div class="container-logo">
-      <img id="logo" src="./../../../assets/images/logo.svg" alt="Logo Moodvie">
-      <p id="title-logo">Moodvie</p>
+      <img id="logo" src="assets/images/logo.svg" alt="Logo Moodvie">
+      <p id="title-logo">{{ 'application.name' | translate }}</p>
     </div>
     <nav class="sidebar">
       <ul>
         <div class="flex-itens">
           <li>
             <a routerLink="/recommender" routerLinkActive="active" class="item-menu display-none-1500">
-              Recomendador
+              {{ 'layout.recommender' | translate }}
             </a>
-            <a routerLink="/recommender" routerLinkActive="active" class="item-menu display-block-full icon-list"><mat-icon>movie_filter</mat-icon>
+            <a routerLink="/recommender" routerLinkActive="active" class="item-menu display-block-full icon-list">
+              <mat-icon>movie_filter</mat-icon>
             </a>
           </li>
           <li>
             <a routerLink="/library" routerLinkActive="active" class="item-menu display-none-1500">
-              Biblioteca
+              {{ 'layout.library' | translate }}
             </a>
             <a routerLink="/library" routerLinkActive="active" class="item-menu display-block-full icon-list">
               <mat-icon>view_carousel</mat-icon>

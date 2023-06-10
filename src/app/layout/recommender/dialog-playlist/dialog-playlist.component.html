@@ -1,5 +1,5 @@
 <div class="content">
-  <p class="title">Salvar em...</p>
+  <p class="title">{{ 'layout.saveAt' | translate }}</p>
   <form [formGroup]="playlistForm">
     <section class="container-checkbox">
       <mat-checkbox color="primary" *ngFor="let playlist of playlists"
@@ -12,18 +12,20 @@
 
   </form>
 
-  <p (click)="showNewPlaylist()" class="create-playlist"><mat-icon>add</mat-icon> Criar Playlist</p>
+  <p (click)="showNewPlaylist()" class="create-playlist">
+    <mat-icon>add</mat-icon>
+    {{ 'layout.createList' | translate }}</p>
 
   <div class="new-playlist" *ngIf="showCreatePlaylist">
     <mat-form-field appearance="outline">
-      <mat-label>Nome</mat-label>
-      <input placeholder="Insira o nome da playlist" maxlength="150" matInput type="text" #playlist>
+      <mat-label>{{ 'general.name' | translate }}</mat-label>
+      <input placeholder="{{ 'layout.insertListName' | translate }}" maxlength="150" matInput type="text" #playlist>
       <mat-hint align="end">{{playlist.value.length}} / 150</mat-hint>
     </mat-form-field>
   </div>
 
   <div class="buttons">
-    <button mat-flat-button class="close" mat-dialog-close>Fechar</button>
-    <button mat-flat-button class="ok" [disabled]="playlistForm.invalid">Selecionar</button>
+    <button mat-flat-button class="close" mat-dialog-close>{{ 'general.close' | translate }}</button>
+    <button mat-flat-button class="ok" [disabled]="playlistForm.invalid">{{ 'general.select' | translate }}</button>
   </div>
 </div>

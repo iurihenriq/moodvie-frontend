@@ -17,21 +17,21 @@ export class SelectMoodComponent {
   constructor(private dialog: MatDialog, private router: Router) {}
 
   moods: any[] = [
-    { name: 'Feliz', emoji: '😄', value: 'HAPPY' },
-    { name: 'Triste', emoji: '😢', value: 'SAD' },
-    { name: 'Irritado', emoji: '😠', value: 'ANGRY' },
-    { name: 'Ansioso', emoji: '😬', value: 'ANXIOUS' },
-    { name: 'Normal', emoji: '😐', value: 'NORMAL' },
-    { name: 'Entediado', emoji: '😒', value: 'BORED' },
-    { name: 'Solitário', emoji: '😔', value: 'LONELY' },
-    { name: 'Nostálgico', emoji: '🌅', value: 'NOSTALGIC' },
-    { name: 'Apaixonado', emoji: '❤️', value: 'IN_LOVE' },
-    { name: 'Pensativo', emoji: '🤔', value: 'THOUGHTFUL' },
-    { name: 'Emotivo', emoji: '😭', value: 'EMOTIONAL' },
-    { name: 'Estressado', emoji: '😫', value: 'STRESSED_OUT' },
-    { name: 'Relaxado', emoji: '😌', value: 'RELAXED' },
-    { name: 'Animado', emoji: '😃', value: 'EXCITED' },
-    { name: 'Surpreenda-me', emoji: '🎉', value: 'SURPRISE_ME' },
+    { name: 'Feliz', emoji: '😄', value: 'HAPPY', translation: 'layout.happy' },
+    { name: 'Triste', emoji: '😢', value: 'SAD', translation: 'layout.sad' },
+    { name: 'Irritado', emoji: '😠', value: 'ANGRY', translation: 'layout.angry' },
+    { name: 'Ansioso', emoji: '😬', value: 'ANXIOUS', translation: 'layout.anxious' },
+    { name: 'Normal', emoji: '😐', value: 'NORMAL', translation: 'layout.normal' },
+    { name: 'Entediado', emoji: '😒', value: 'BORED', translation: 'layout.bored' },
+    { name: 'Solitário', emoji: '😔', value: 'LONELY', translation: 'layout.lonely' },
+    { name: 'Nostálgico', emoji: '🌅', value: 'NOSTALGIC', translation: 'layout.nostalgic' },
+    { name: 'Apaixonado', emoji: '❤️', value: 'IN_LOVE', translation: 'layout.inLove' },
+    { name: 'Pensativo', emoji: '🤔', value: 'THOUGHTFUL', translation: 'layout.thoughtful' },
+    { name: 'Emotivo', emoji: '😭', value: 'EMOTIONAL', translation: 'layout.emotional' },
+    { name: 'Estressado', emoji: '😫', value: 'STRESSED_OUT', translation: 'layout.stressedOut' },
+    { name: 'Relaxado', emoji: '😌', value: 'RELAXED', translation: 'layout.relaxed' },
+    { name: 'Animado', emoji: '😃', value: 'EXCITED', translation: 'layout.excited' },
+    { name: 'Surpreenda-me', emoji: '🎉', value: 'SURPRISE_ME', translation: 'layout.surpriseMe' },
   ];
 
   openDialog(mood: string, moodType: string): void {

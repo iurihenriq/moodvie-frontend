@@ -1,16 +1,18 @@
 <div class="content">
-  <p class="title">Selecione um título que você gostou de assistir quando estava <span class="mood">{{mood}}</span></p>
+  <p class="title">{{ 'layout.selectTitle' | translate }} <span
+    class="mood">{{ mood | translate }}</span></p>
   <form [formGroup]="selectForm">
     <mat-form-field appearance="outline">
-      <mat-label>Filme/Série</mat-label>
+      <mat-label>{{ 'layout.movie' | translate }}/{{ 'layout.tvshow' | translate }}</mat-label>
       <mat-select formControlName="type">
-        <mat-option value="movie">Filme</mat-option>
-        <mat-option value="tv">Série</mat-option>
+        <mat-option value="movie">{{ 'layout.movie' | translate }}</mat-option>
+        <mat-option value="tv">{{ 'layout.tvshow' | translate }}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Filme/Série</mat-label>
-      <input type="text" placeholder="Busque pelo nome" matInput formControlName="title" [matAutocomplete]="auto">
+      <mat-label>{{ 'layout.movie' | translate }}/{{ 'layout.tvshow' | translate }}</mat-label>
+      <input type="text" placeholder="{{ 'layout.findByName' | translate }}" matInput formControlName="title"
+             [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let movie of movies | async" [value]="movie">
           {{movie}}
@@ -20,7 +22,9 @@
   </form>
 
   <div class="buttons">
-    <button mat-flat-button class="close" mat-dialog-close>Fechar</button>
-    <button mat-flat-button class="ok" [disabled]="selectForm.invalid" (click)="selectTitle()" mat-dialog-close>Selecionar</button>
+    <button mat-flat-button class="close" mat-dialog-close>{{ 'general.close' | translate }}</button>
+    <button mat-flat-button class="ok" [disabled]="selectForm.invalid" (click)="selectTitle()" mat-dialog-close>
+      {{ 'general.select' | translate }}
+    </button>
   </div>
 </div>

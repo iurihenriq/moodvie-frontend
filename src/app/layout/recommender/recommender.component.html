@@ -1,12 +1,12 @@
 <div class="content">
   <div class="container mood">
-    <p>Se sentindo <span class="label-mood">{{mood}}</span></p>
-    <button routerLink="/select-mood">Alterar sentimento</button>
+    <p>{{ 'layout.imFeeling' | translate }} <span class="label-mood">{{ mood | translate }}</span></p>
+    <button routerLink="/select-mood">{{ 'layout.changeFeeling' | translate}}</button>
   </div>
   <div class="container-recommender">
     <div class="movie-serie">
-      <a (click)="setType('movie')">Filme</a>
-      <a (click)="setType('tv')">Série</a>
+      <a (click)="setType('movie')">{{ 'layout.movie' | translate}}</a>
+      <a (click)="setType('tv')">{{ 'layout.tvshow' | translate}}</a>
     </div>
     <div class="container moovie">
       <div [style.background-image]="'url('+ banner + ')'" class="banner"></div>
@@ -34,7 +34,7 @@
 
         <div class="sinopse-gender">
           <div class="sinopse">
-            <p >{{sinopse}}</p>
+            <p>{{sinopse}}</p>
           </div>
           <div class="gender">
             <p *ngFor="let gender of genders">{{gender.name}}</p>
@@ -42,13 +42,21 @@
         </div>
 
         <div class="buttons">
-          <button class="button watched"><mat-icon>remove_red_eye</mat-icon></button>
-          <button class="button save" (click)="openDialogPlaylist()"><mat-icon>bookmark</mat-icon></button>
-          <button class="button next" (click)="findMovie()">Próximo <mat-icon>navigate_next</mat-icon></button>
+          <button class="button watched" matTooltip="{{ 'layout.watched' | translate }}">
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+          <button class="button save" (click)="openDialogPlaylist()" matTooltip="{{ 'layout.saveToList' | translate }}">
+            <mat-icon>bookmark</mat-icon>
+          </button>
+          <button class="button next" (click)="findMovie()">{{ 'layout.next' | translate }}
+            <mat-icon>navigate_next</mat-icon>
+          </button>
         </div>
       </div>
     </div>
   </div>
-  <iframe *ngIf="viewTrailer" width="100%" class="trailer" height="100%" [src]="videoUrl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  <div id="no-trailer" *ngIf="!viewTrailer"><p>o trailer não está disponivel :/</p></div>
+  <iframe *ngIf="viewTrailer" width="100%" class="trailer" height="100%" [src]="videoUrl" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+  <div id="no-trailer" *ngIf="!viewTrailer"><p>{{ 'layout.trailerNotAvailable' | translate }}</p></div>
 </div>

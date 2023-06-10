@@ -7,19 +7,20 @@
           <div class="form">
             <div class="flex">
               <label class="input-wrapper">
-                <input type="text" formControlName="username" placeholder=" " required />
-                <span class="placeholder">Usuário</span>
+                <input type="text" formControlName="username" placeholder=" " required/>
+                <span class="placeholder">{{ 'login.user' | translate }}</span>
               </label>
               <mat-error *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-                Campo usuário é <b>obrigatório</b>
+                {{ 'login.userMandatory' | translate}}
               </mat-error>
             </div>
 
 
             <div class="flex">
               <label class="input-wrapper">
-                <input type="{{ mostrarSenha ? 'text' : 'password' }}" formControlName="password" placeholder=" " required />
-                <span class="placeholder">Senha</span>
+                <input type="{{ mostrarSenha ? 'text' : 'password' }}" formControlName="password" placeholder=" "
+                       required/>
+                <span class="placeholder">{{ 'login.password' | translate }}</span>
                 <span class="icon" (click)="togglePasswordVisibility()">
                   <i class="material-icons" [ngClass]="mostrarSenha ? 'icon-visible' : 'icon-hidden'">
                     {{ mostrarSenha ? 'visibility_off' : 'visibility' }}
@@ -27,12 +28,13 @@
                 </span>
               </label>
               <mat-error *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-                Campo senha é <b>obrigatório</b>
+
               </mat-error>
             </div>
 
           </div>
-          <p class="forgot-password">esqueceu sua senha? <span>Clique aqui</span></p>
+          <p class="forgot-password"> {{ 'login.forgotPassword' | translate }}
+            <span>{{ 'login.clickHere' | translate }}</span></p>
 
           <button (click)="login()" class="button" [disabled]="loginForm.invalid">Entrar</button>
         </div>
@@ -43,16 +45,16 @@
 
   <div class="container-background">
     <div class="information">
-      <img src="../../../../assets/images/logo.svg" alt="">
+      <img src="assets/images/logo.svg" alt="">
       <div class="welcome">
-        <p>Olá,</p>
-        <p>bem-vindo de volta</p>
-        <p>ao <span>Moodvie</span></p>
+        <p>{{ 'login.hello' | translate }}</p>
+        <p>{{ 'login.welcomeBack' | translate }}</p>
+        <p><span>{{ 'application.name' | translate }}</span></p>
       </div>
 
       <div class="without-account">
-        <p>Ainda não possui uma conta?</p>
-        <a routerLink="/register">Cadastre-se</a>
+        <p>{{ 'login.dontHaveAccount' | translate }}</p>
+        <a routerLink="/register">{{ 'login.register' | translate}}</a>
       </div>
     </div>
   </div>

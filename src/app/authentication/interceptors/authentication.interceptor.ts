@@ -21,15 +21,12 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     let updatedRequest;
 
     if (request.url.includes("/api")) {
-      console.log("tudo")
-
       updatedRequest = request.clone({
         setHeaders: {
           Authorization: `Bearer ${this.authService.bearerToken}`,
         },
       });
     } else {
-      console.log("login")
       updatedRequest = request.clone();
     }
 

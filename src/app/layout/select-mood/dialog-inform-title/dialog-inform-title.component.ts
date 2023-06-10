@@ -35,6 +35,7 @@ export class DialogInformTitleComponent implements OnInit {
     private tmdb: TMDBService,
     @Inject(MAT_DIALOG_DATA) data: DialogData
   ) {
+    console.log(data)
     this.mood = data.mood.toLocaleLowerCase();
     this.moodType = data.moodType;
   }

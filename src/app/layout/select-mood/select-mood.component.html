@@ -1,11 +1,12 @@
 <div class="content">
-  <p class="title">Descubra o título ideal para você assistir com base no seu humor</p>
+  <p class="title">{{'layout.discoverTitle' | translate}}</p>
   <div class="detail"></div>
-  <p class="subtitle">Como você está se sentindo agora?</p>
+  <p class="subtitle">{{'layout.feelingNow' | translate}}</p>
   <div class="container-moods">
-    <div (click)="mood.value != 'SURPRISE_ME'?openDialog(mood.name, mood.value):surpriseMe()" class="container-mood" *ngFor="let mood of moods">
-      <p class="emoji">{{mood.emoji}}</p>
-      <p class="title-mood">{{mood.name}}</p>
+    <div (click)="mood.value != 'SURPRISE_ME'?openDialog(mood.translation, mood.value):surpriseMe()"
+         class="container-mood" *ngFor="let mood of moods">
+      <p class="emoji">{{ mood.emoji }}</p>
+      <p class="title-mood">{{ mood.translation | translate }}</p>
     </div>
   </div>
 </div>
