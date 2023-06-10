@@ -5,8 +5,8 @@
   </div>
   <div class="container-recommender">
     <div class="movie-serie">
-      <a href="">Filme</a>
-      <a href="">Série</a>
+      <a (click)="setType('movie')">Filme</a>
+      <a (click)="setType('tv')">Série</a>
     </div>
     <div class="container moovie">
       <div [style.background-image]="'url('+ banner + ')'" class="banner"></div>

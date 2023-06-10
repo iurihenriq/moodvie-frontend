@@ -1,7 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {map} from 'rxjs';
-import {environment} from 'src/environments/environment.prod';
+import {environment} from 'src/environments/environment';
 
 interface Login {
   username: string;
@@ -17,7 +17,7 @@ export class AuthenticationService {
 
   authenticate(loginInfo: any) {
     return this.http
-      .post(`${environment.apiUrl}/login`, loginInfo)
+      .post(`${environment.apiUrl}/auth/login`, loginInfo)
       .pipe<any>(map((response: any) => (this.bearerToken = response.token)));
   }
 

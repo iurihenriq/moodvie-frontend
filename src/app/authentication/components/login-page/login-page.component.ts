@@ -34,7 +34,7 @@ export class LoginPageComponent {
   login() {
     this.service.authenticate(this.loginForm.value).subscribe({
       next: (response: any) => {
-        this.router.navigate(['/recommender']).catch(() => alert('Erro!'));
+        this.router.navigate(['/select-mood']).catch(() => alert('Erro!'));
       },
       error: () => {
         alert('USUÁRIO NÃO ENCONTRADO');

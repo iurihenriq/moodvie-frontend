@@ -6,6 +6,7 @@ import { LibraryComponent } from '../library/library.component';
 import { StatisticsComponent } from '../statistics/statistics.component';
 import { SelectMoodComponent } from '../select-mood/select-mood.component';
 import { AuthGuard } from 'src/app/authentication/guards/auth.guard';
+import { MoodGuard } from 'src/app/authentication/guards/mood.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'recommender', pathMatch: 'full' },
-      { path: 'recommender', component: RecommenderComponent },
+      { path: 'recommender', component: RecommenderComponent, canActivate: [MoodGuard] },
       { path: 'library', component: LibraryComponent },
       { path: 'statistics', component: StatisticsComponent },
       { path: 'select-mood', component: SelectMoodComponent },

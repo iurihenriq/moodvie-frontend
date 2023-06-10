@@ -3,6 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogInformTitleComponent } from './dialog-inform-title/dialog-inform-title.component';
 import { Router } from '@angular/router';
 
+interface DialogData {
+  mood: string;
+  moodType: string;
+}
+
 @Component({
   selector: 'app-select-mood',
   templateUrl: './select-mood.component.html',
@@ -29,10 +34,15 @@ export class SelectMoodComponent {
     { name: 'Surpreenda-me', emoji: '🎉', value: 'SURPRISE_ME' },
   ];
 
-  openDialog(mood: string): void {
+  openDialog(mood: string, moodType: string): void {
+    const dialogData: DialogData = {
+      mood: mood,
+      moodType: moodType,
+    };
+
     this.dialog.open(DialogInformTitleComponent, {
       width: '500px',
-      data: mood,
+      data: dialogData,
       disableClose: true,
     });
   }

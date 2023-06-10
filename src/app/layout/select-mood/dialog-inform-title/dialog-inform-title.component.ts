@@ -6,7 +6,14 @@ import {
   FormControl,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable, startWith, map } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable, startWith, map, debounceTime } from 'rxjs';
+import { TMDBService } from '../../service/tmdb.service';
+
+interface DialogData {
+  mood: string;
+  moodType: string;
+}
 
 @Component({
   selector: 'app-dialog-inform-title',
@@ -17,15 +24,19 @@ export class DialogInformTitleComponent implements OnInit {
   selectForm!: FormGroup;
   movies: Observable<string[]> = new Observable<string[]>();
   mood: string = 'sentimento';
+  moodType: string = '';
 
-  options: string[] = ['One', 'Two', 'Three'];
+  movieOptions: string[] = [];
   myControl = new FormControl('');
 
   constructor(
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) mood: string
+    private router: Router,
+    private tmdb: TMDBService,
+    @Inject(MAT_DIALOG_DATA) data: DialogData
   ) {
-    this.mood = mood.toLocaleLowerCase();
+    this.mood = data.mood.toLocaleLowerCase();
+    this.moodType = data.moodType;
   }
 
   ngOnInit() {
@@ -34,21 +45,47 @@ export class DialogInformTitleComponent implements OnInit {
       title: ['', [Validators.required]],
     });
 
+  //   this.selectForm.valueChanges.subscribe((form: any) =>
+  //   this.tmdb.findMovieByQuery(form.type, form.title).subscribe((value) => {
+  //     console.log(value);
+  //     this.movieOptions = value.map((movie: any) => movie.title);
+  //   }, (err) => {
+  //     console.log(err.status);
+  //   })
+  // );
+
+  this.selectForm.valueChanges.pipe(
+    debounceTime(1000) // Tempo de espera de 1 seg
+  ).subscribe((form: any) => {
+    this.tmdb.findMovieByQuery(form.type, form.title).subscribe((value) => {
+      console.log(value)
+      this.movieOptions = value.map((movie: any) => movie.title);
+    }, (err) => {
+      console.log(err.status);
+    });
+  });
+
+
     this.movies = this.selectForm.get('title')!.valueChanges.pipe(
       startWith(''),
       map((value: string) => this._filter(value || ''))
     );
 
-    this.selectForm.valueChanges.subscribe(() =>
-      console.log(this.selectForm.value)
-    );
+  }
+
+  selectTitle() {
+    localStorage.setItem('moodType', this.moodType);
+    localStorage.setItem('mood', this.mood);
+
+    this.router.navigate(['/recommender']);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter((option) =>
+    return this.movieOptions.filter((option) =>
       option.toLowerCase().includes(filterValue)
     );
   }
+
 }

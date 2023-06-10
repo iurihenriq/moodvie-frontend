@@ -20,11 +20,19 @@ export class AuthenticationInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     let updatedRequest;
 
-    updatedRequest = request.clone({
-      setHeaders: {
-        AuthorizationLDAP: `Bearer ${this.authService.bearerToken}`,
-      },
-    });
+    if (request.url.includes("/api")) {
+      console.log("tudo")
+
+      updatedRequest = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${this.authService.bearerToken}`,
+        },
+      });
+    } else {
+      console.log("login")
+      updatedRequest = request.clone();
+    }
+
 
 
     return next.handle(updatedRequest).pipe(

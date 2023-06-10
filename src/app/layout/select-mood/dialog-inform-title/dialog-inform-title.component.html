@@ -4,13 +4,13 @@
     <mat-form-field appearance="outline">
       <mat-label>Filme/Série</mat-label>
       <mat-select formControlName="type">
-        <mat-option value="MOOVIE">Filme</mat-option>
-        <mat-option value="SHOW">Série</mat-option>
+        <mat-option value="movie">Filme</mat-option>
+        <mat-option value="tv">Série</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Filme/Série</mat-label>
-      <input type="text" placeholder="Escolha um" matInput formControlName="title" [matAutocomplete]="auto">
+      <input type="text" placeholder="Busque pelo nome" matInput formControlName="title" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let movie of movies | async" [value]="movie">
           {{movie}}
@@ -21,6 +21,6 @@
 
   <div class="buttons">
     <button mat-flat-button class="close" mat-dialog-close>Fechar</button>
-    <button mat-flat-button class="ok" [disabled]="selectForm.invalid">Selecionar</button>
+    <button mat-flat-button class="ok" [disabled]="selectForm.invalid" (click)="selectTitle()" mat-dialog-close>Selecionar</button>
   </div>
 </div>

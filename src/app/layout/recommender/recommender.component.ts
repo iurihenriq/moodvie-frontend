@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {RecommenderService} from './service/recommender.service';
-import {DomSanitizer} from '@angular/platform-browser';
-import {MatDialog} from '@angular/material/dialog';
-import {DialogPlaylistComponent} from './dialog-playlist/dialog-playlist.component';
+import { Component, OnInit } from '@angular/core';
+import { TMDBService } from '../service/tmdb.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogPlaylistComponent } from './dialog-playlist/dialog-playlist.component';
 
 @Component({
   selector: 'app-recommender',
@@ -10,9 +10,11 @@ import {DialogPlaylistComponent} from './dialog-playlist/dialog-playlist.compone
   styleUrls: ['./recommender.component.scss'],
 })
 export class RecommenderComponent implements OnInit {
+  type: string = 'filme';
+
   viewTrailer: boolean = true;
-  mood: string = 'triste';
-  banner: string = '../../../assets/images/banner.jpg';
+  mood: string = '';
+  banner: string = '';
   title: string = '';
   year: string = '';
   trailer: string = '';
@@ -27,25 +29,25 @@ export class RecommenderComponent implements OnInit {
     'Após dois anos espreitando as ruas como Batman, Bruce Wayne se encontra nas profundezas mais sombrias de Gotham City. Com poucos aliados confiáveis, o vigilante solitário se estabelece como a personificação da vingança para a população.';
   genders: any = [];
   movies: any = [
-    {name: '../../../assets/images/banner.jpg'},
-    {name: '../../../assets/images/banner.jpg'},
-    {name: '../../../assets/images/banner.jpg'},
-    {name: '../../../assets/images/banner.jpg'},
-    {name: '../../../assets/images/banner.jpg'},
-    {name: '../../../assets/images/banner.jpg'},
-    {name: '../../../assets/images/banner.jpg'},
+    { name: '../../../assets/images/banner.jpg' },
+    { name: '../../../assets/images/banner.jpg' },
+    { name: '../../../assets/images/banner.jpg' },
+    { name: '../../../assets/images/banner.jpg' },
+    { name: '../../../assets/images/banner.jpg' },
+    { name: '../../../assets/images/banner.jpg' },
+    { name: '../../../assets/images/banner.jpg' },
   ];
   movie: number = 8;
   movieArray: any[] = new Array(this.movie);
 
   constructor(
-    private service: RecommenderService,
+    private service: TMDBService,
     private sanitizer: DomSanitizer,
     private dialog: MatDialog
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.mood = localStorage.getItem('mood')!;
     this.findMovie();
   }
 
@@ -100,6 +102,14 @@ export class RecommenderComponent implements OnInit {
       // data: mood,
       disableClose: true,
     });
+  }
+
+  setType(type: string) {
+    this.type = type;
+  }
+
+  getType() {
+    return this.type;
   }
 
   formatDuration(minutes: number): string {

@@ -9,9 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from './shared/shared.module';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './layout/layout-routing/layout.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthenticationInterceptor } from './authentication/interceptors/authentication.interceptor';
 
 registerLocaleData(localePt);
 registerLocaleData(localeEn);
@@ -39,7 +40,13 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     SharedModule.forRoot(),
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthenticationInterceptor,
+    multi: true,
+  },
+  { provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
