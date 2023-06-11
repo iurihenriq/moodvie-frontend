@@ -48,7 +48,8 @@ export class SelectMoodComponent {
   }
 
   surpriseMe() {
-    alert('surpresa');
+    localStorage.setItem('moodType', 'SURPRISE_ME');
+    localStorage.setItem('mood', 'curioso');
     this.router.navigate(['/recommender']);
   }
 }
