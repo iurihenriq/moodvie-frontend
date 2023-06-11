@@ -1,15 +1,15 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {
   FormBuilder,
   Validators,
   FormGroup,
   FormControl,
 } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { Observable, startWith, map, debounceTime, tap } from 'rxjs';
-import { TMDBService } from '../../service/tmdb.service';
-import { MoodService } from '../../service/mood.service';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Router} from '@angular/router';
+import {Observable, startWith, map, tap} from 'rxjs';
+import {TMDBService} from '../../service/tmdb.service';
+import {MoodService} from '../../service/mood.service';
 
 interface DialogData {
   mood: string;
@@ -37,7 +37,6 @@ export class DialogInformTitleComponent implements OnInit {
     private moodService: MoodService,
     @Inject(MAT_DIALOG_DATA) data: DialogData
   ) {
-    console.log(data)
     this.mood = data.mood.toLocaleLowerCase();
     this.moodType = data.moodType;
   }
@@ -50,33 +49,36 @@ export class DialogInformTitleComponent implements OnInit {
       moodType: this.moodType
     });
 
-  this.selectForm.valueChanges.subscribe((form: any) => {
-    this.tmdb.findMovieByQuery(form.contentType, form.title).subscribe((value) => {
-      console.log(value);
-      this.movieOptions = value.map((movie: any) => {
-        return {
-          id: movie.id,
-          title: movie.title
-        };
-      })
-    }, (err) => {
-      console.log(err.status);
-    });
-  });
-
-  this.movies = this.selectForm.get('title')!.valueChanges.pipe(
-    startWith(''),
-    map((value: string) => this._filter(value || '')),
-    tap((filteredMovies: any) => {
-      const selectedMovie = filteredMovies.find((movie:any) => movie.title.toLowerCase() === this.selectForm.get('title')!.value.toLowerCase());
-      if (selectedMovie) {
-        this.selectForm.patchValue({ contentId: selectedMovie.id });
-
-      } else {
-        this.selectForm.patchValue({ contentId: '' });
+    this.selectForm.valueChanges.subscribe((form: any) => {
+      if (this.selectForm.valid) {
+        this.tmdb.findMovieByQuery(form.contentType, form.title).subscribe({
+          next: (value) => {
+            this.movieOptions = value.map((movie: any) => {
+              return {
+                id: movie.id,
+                title: movie.title
+              };
+            })
+          }, error: (err) => {
+            console.log(err.status);
+          }
+        });
       }
-    })
-  );
+    });
+
+    this.movies = this.selectForm.get('title')!.valueChanges.pipe(
+      startWith(''),
+      map((value: string) => this._filter(value || '')),
+      tap((filteredMovies: any) => {
+        const selectedMovie = filteredMovies.find((movie: any) => movie.title.toLowerCase() === this.selectForm.get('title')!.value.toLowerCase());
+        if (selectedMovie) {
+          this.selectForm.patchValue({contentId: selectedMovie.id});
+
+        } else {
+          this.selectForm.patchValue({contentId: ''});
+        }
+      })
+    );
   }
 
   selectTitle() {
