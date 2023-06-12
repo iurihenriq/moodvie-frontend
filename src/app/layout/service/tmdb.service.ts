@@ -52,7 +52,8 @@ export class TMDBService {
     return this.http.get<any[]>(url);
   }
 
-  findMovieByQuery(type: string, title: string) {
+  findMovieByQuery(title: string) {
+    const type = localStorage.getItem('contentType');
     const url = `${environment.apiUrl}/api/tmdb/query/${type}/${this.lang}?query=${title}`
 
     return this.http.get<any[]>(url);

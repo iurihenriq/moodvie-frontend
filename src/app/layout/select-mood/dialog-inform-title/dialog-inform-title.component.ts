@@ -50,8 +50,9 @@ export class DialogInformTitleComponent implements OnInit {
     });
 
     this.selectForm.valueChanges.subscribe((form: any) => {
+console.log(form)
       if (this.selectForm.valid) {
-        this.tmdb.findMovieByQuery(form.contentType, form.title).subscribe({
+        this.tmdb.findMovieByQuery(form.title).subscribe({
           next: (value) => {
             this.movieOptions = value.map((movie: any) => {
               return {
