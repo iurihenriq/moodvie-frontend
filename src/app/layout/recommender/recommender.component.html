@@ -8,7 +8,9 @@
       <a (click)="setType('movie')">{{ 'layout.movie' | translate}}</a>
       <a (click)="setType('tv')">{{ 'layout.tvshow' | translate}}</a>
     </div>
+
     <div class="container moovie">
+      <mat-progress-bar color="primary" mode="indeterminate" *ngIf="!request.closed"></mat-progress-bar>
       <div [style.background-image]="'url('+ banner + ')'" class="banner"></div>
       <div class="content-moovie">
         <div class="header">
@@ -48,15 +50,15 @@
           <button class="button save" (click)="openDialogPlaylist()" matTooltip="{{ 'layout.saveToList' | translate }}">
             <mat-icon>bookmark</mat-icon>
           </button>
-          <button class="button next" (click)="findMovie()">{{ 'layout.next' | translate }}
+          <button class="button next" (click)="nextRecommendation()">{{ 'layout.next' | translate }}
             <mat-icon>navigate_next</mat-icon>
           </button>
         </div>
       </div>
     </div>
   </div>
-  <iframe *ngIf="viewTrailer" width="100%" class="trailer" height="100%" [src]="videoUrl" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
-  <div id="no-trailer" *ngIf="!viewTrailer"><p>{{ 'layout.trailerNotAvailable' | translate }}</p></div>
+  <iframe *ngIf="viewTrailer" width="100%" class="trailer" height="100%" [src]="videoUrl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  <div id="no-trailer" *ngIf="!viewTrailer">
+    <p>{{ 'layout.trailerNotAvailable' | translate }}</p>
+  </div>
 </div>

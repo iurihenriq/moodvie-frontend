@@ -40,7 +40,8 @@ export class SelectMoodComponent implements OnInit {
   }
 
   ngOnInit() {
-    localStorage.setItem('contentType', this.contentType);
+    this.onContentType("MOVIE");
+    // @ts-ignore
     this.moodService.findMoods().subscribe({
       next: (response: any[]) => {
         response.forEach((mood) => {
@@ -49,6 +50,10 @@ export class SelectMoodComponent implements OnInit {
         })
       }
     })
+  }
+
+  onContentType(option: string) {
+    localStorage.setItem('contentType', option)
   }
 
   openDialog(mood: any): void {

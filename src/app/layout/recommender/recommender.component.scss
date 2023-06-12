@@ -75,6 +75,8 @@
       padding: $padding-medium;
       border-radius: $border-radius-medium;
       background-color: $details-color;
+      display: flex;
+      align-items: center;
     }
   }
 
@@ -315,4 +317,10 @@
   .content-moovie {
     padding: $padding-medium !important;
   }
+}
+
+mat-progress-bar {
+  position: absolute;
+  z-index: 100;
+  // top: 0;
 }

@@ -99,6 +99,7 @@ ul {
   grid-template-columns: 15% 85%;
   padding: $padding-large;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .card {
@@ -110,6 +111,7 @@ ul {
   width: 100%;
   box-sizing: border-box;
   overflow-y: auto;
+  overflow-x: hidden;
 
   .recommender-library {
     padding: $padding-large;

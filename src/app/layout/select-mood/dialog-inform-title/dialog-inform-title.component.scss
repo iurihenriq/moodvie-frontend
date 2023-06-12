@@ -12,6 +12,10 @@
   height: 100%;
   box-sizing: border-box;
 
+  mat-form-field {
+    width: 100%;
+  }
+
   .title {
     color: $font-color-black;
     font-size: $font-size-large;
@@ -19,12 +23,6 @@
     .mood {
       color: $details-color;
     }
-  }
-
-  form {
-    display: flex;
-    gap: $gap-large;
-    justify-content: space-between;
   }
 
   .buttons {
