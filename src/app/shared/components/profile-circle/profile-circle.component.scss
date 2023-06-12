@@ -21,7 +21,7 @@ $menu-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     font-size: $font-size-small;
     position: absolute;
     top: calc(100% + 5px);
-    left: 50%;
+    // left: 50%;
     transform: translateX(-50%);
     background-color: $details-color;
     padding: 10px;

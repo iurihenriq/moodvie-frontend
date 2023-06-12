@@ -34,10 +34,13 @@ export class SelectMoodComponent implements OnInit {
     {name: 'Surpreenda-me', emoji: '🎉', value: 'SURPRISE_ME', translation: 'layout.surpriseMe', content: null},
   ];
 
+  selectedOption: string = "MOVIE"
+
   constructor(private dialog: MatDialog, private router: Router, private moodService: MoodService) {
   }
 
   ngOnInit() {
+    this.onOptionChange("MOVIE");
     // @ts-ignore
     this.moodService.findMoods().subscribe({
       next: (response: any[]) => {
@@ -47,6 +50,10 @@ export class SelectMoodComponent implements OnInit {
         })
       }
     })
+  }
+
+  onOptionChange(option: string) {
+    localStorage.setItem('contentType', option)
   }
 
   openDialog(mood: any): void {

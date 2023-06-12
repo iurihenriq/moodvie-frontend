@@ -1,25 +1,15 @@
 <div class="content">
-  <p class="title">{{ 'layout.selectTitle' | translate }} <span
-    class="mood">{{ mood | translate }}</span></p>
+  <p class="title">{{ 'layout.selectTitle' | translate }} <span class="mood">{{ mood | translate }}</span></p>
   <form [formGroup]="selectForm">
     <mat-form-field appearance="outline">
       <mat-label>{{ 'layout.movie' | translate }}/{{ 'layout.tvshow' | translate }}</mat-label>
-      <mat-select formControlName="contentType">
-        <mat-option value="MOVIE">{{ 'layout.movie' | translate }}</mat-option>
-        <mat-option value="TV">{{ 'layout.tvshow' | translate }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>{{ 'layout.movie' | translate }}/{{ 'layout.tvshow' | translate }}</mat-label>
-      <input type="text" placeholder="{{ 'layout.findByName' | translate }}" matInput formControlName="title"
-             [matAutocomplete]="auto">
+      <input type="text" placeholder="{{ 'layout.findByName' | translate }}" matInput formControlName="title" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let movie of movies | async" [value]="movie.title">
           {{ movie.title }}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-
   </form>
 
   <div class="buttons">
