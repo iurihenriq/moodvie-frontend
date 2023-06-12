@@ -105,10 +105,14 @@ export class RecommenderComponent implements OnInit {
           }); */
           if(movieDetails.videos){
             if (movieDetails.videos.results.length !== 0) {
-            this.trailer = `https://www.youtube.com/embed/${movieDetails.videos.results[0].key}`;
-            this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-              this.trailer
-            );
+              if(movieDetails.videos.results[0].official==true){
+                this.trailer = `https://www.youtube.com/embed/${movieDetails.videos.results[0].key}`;
+                this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+                  this.trailer
+                );
+              } else{
+                this.viewTrailer = false;
+              }
             } else {
               this.viewTrailer = false;
             }
