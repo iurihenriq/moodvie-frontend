@@ -43,7 +43,7 @@ export class DialogInformTitleComponent implements OnInit {
 
   ngOnInit() {
     this.selectForm = this.formBuilder.group({
-      contentType: ['', [Validators.required]],
+      contentType: [localStorage.getItem('contentType')],
       title: ['', [Validators.required]],
       contentId: [''],
       moodType: this.moodType

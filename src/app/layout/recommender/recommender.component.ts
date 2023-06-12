@@ -3,6 +3,7 @@ import { TMDBService } from '../service/tmdb.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogPlaylistComponent } from './dialog-playlist/dialog-playlist.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recommender',
@@ -11,6 +12,8 @@ import { DialogPlaylistComponent } from './dialog-playlist/dialog-playlist.compo
 })
 export class RecommenderComponent implements OnInit {
   type: string = 'filme';
+  request = new Subscription();
+
 
   viewTrailer: boolean = true;
   mood: string = '';
@@ -25,18 +28,9 @@ export class RecommenderComponent implements OnInit {
   streaming: string = 'hbo';
   streamingURL: string = `../../../assets/images/streamings/${this.streaming}.png`;
   linkStreaming: string = 'https://www.hbomax.com/br/pt';
-  sinopse: string =
-    'Após dois anos espreitando as ruas como Batman, Bruce Wayne se encontra nas profundezas mais sombrias de Gotham City. Com poucos aliados confiáveis, o vigilante solitário se estabelece como a personificação da vingança para a população.';
+  sinopse: string = '';
   genders: any = [];
-  movies: any = [
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-    { name: '../../../assets/images/banner.jpg' },
-  ];
+
   movie: number = 8;
   movieArray: any[] = new Array(this.movie);
 
@@ -68,7 +62,7 @@ export class RecommenderComponent implements OnInit {
 
   findMovie() {
     this.page++;
-    this.service.findRecommendations(this.page).subscribe((movies: any) => {
+    this.request = this.service.findRecommendations(this.page).subscribe((movies: any) => {
       console.log(movies)
       for (let index = 0; index < movies.results.length; index++) {
         if (movies.results[index].overview.length != 0 && !this.filterMovies.includes(movies.results[index].id)) {
