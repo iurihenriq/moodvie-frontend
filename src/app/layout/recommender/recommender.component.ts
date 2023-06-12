@@ -40,6 +40,8 @@ export class RecommenderComponent implements OnInit {
   movie: number = 8;
   movieArray: any[] = new Array(this.movie);
 
+  page: number = 1;
+  filterMovies: any[] = [];
 
   constructor(
     private service: TMDBService,
@@ -53,19 +55,19 @@ export class RecommenderComponent implements OnInit {
   }
 
   findMovie() {
-    this.service.findRecommendations(1).subscribe((movies: any) => {
+    this.service.findRecommendations(this.page).subscribe((movies: any) => {
       console.log(movies)
-      const filterMovies = [];
       for (let index = 0; index < movies.results.length; index++) {
         if (movies.results[index].overview.length != 0) {
-          filterMovies.push(movies.results[index]);
+          this.filterMovies.push(movies.results[index]);
         }
       }
 
-      const moviesLenght = filterMovies.length;
+      const moviesLenght = this.filterMovies.length;
 
-      const randomIndex = Math.floor(Math.random() * filterMovies.length);
-      const randomMovie = filterMovies[randomIndex];
+
+      const randomIndex = Math.floor(Math.random() * this.filterMovies.length);
+      const randomMovie = this.filterMovies[randomIndex];
 
       this.service
         .findDetailsMovie(randomMovie.id)

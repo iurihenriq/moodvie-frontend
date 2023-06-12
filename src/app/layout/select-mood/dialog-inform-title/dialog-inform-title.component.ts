@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Router} from '@angular/router';
-import {Observable, startWith, map, tap} from 'rxjs';
+import { Observable, startWith, map, tap, debounceTime } from 'rxjs';
 import {TMDBService} from '../../service/tmdb.service';
 import {MoodService} from '../../service/mood.service';
 
@@ -49,10 +49,13 @@ export class DialogInformTitleComponent implements OnInit {
       moodType: this.moodType
     });
 
-    this.selectForm.valueChanges.subscribe((form: any) => {
-console.log(form)
+    this.selectForm.valueChanges
+    .pipe(debounceTime(1000))
+    .subscribe((form: any) => {
       if (this.selectForm.valid) {
-        this.tmdb.findMovieByQuery(form.title).subscribe({
+        this.tmdb.findMovieByQuery(form.title)
+
+        .subscribe({
           next: (value) => {
             this.movieOptions = value.map((movie: any) => {
               return {
