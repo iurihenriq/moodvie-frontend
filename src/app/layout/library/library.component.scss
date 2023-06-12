@@ -32,7 +32,7 @@
     display: flex;
     align-items: center;
     gap: $gap-large;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: column;
     height: auto;
     max-height: calc(100vh - 182px);

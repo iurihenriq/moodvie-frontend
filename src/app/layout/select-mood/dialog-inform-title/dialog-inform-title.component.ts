@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Router} from '@angular/router';
-import { Observable, startWith, map, tap, debounceTime } from 'rxjs';
+import {Observable, startWith, map, tap, debounceTime} from 'rxjs';
 import {TMDBService} from '../../service/tmdb.service';
 import {MoodService} from '../../service/mood.service';
 
@@ -23,7 +23,6 @@ interface DialogData {
 })
 export class DialogInformTitleComponent implements OnInit {
   selectForm!: FormGroup;
-  movies: Observable<{ id: any; title: any; }[]> = new Observable<{ id: any; title: any; }[]>();
   mood: string = 'sentimento';
   moodType: string = '';
 
@@ -50,62 +49,44 @@ export class DialogInformTitleComponent implements OnInit {
     });
 
     this.selectForm.valueChanges
-    .pipe(debounceTime(1000))
-    .subscribe((form: any) => {
-      if (this.selectForm.valid) {
-        this.tmdb.findMovieByQuery(form.title)
-
-        .subscribe({
-          next: (value) => {
-            this.movieOptions = value.map((movie: any) => {
-              return {
-                id: movie.id,
-                title: movie.title
-              };
-            })
-          }, error: (err) => {
-            console.log(err.status);
-          }
-        });
-      }
-    });
-
-    this.movies = this.selectForm.get('title')!.valueChanges.pipe(
-      startWith(''),
-      map((value: string) => this._filter(value || '')),
-      tap((filteredMovies: any) => {
-        const selectedMovie = filteredMovies.find((movie: any) => movie.title.toLowerCase() === this.selectForm.get('title')!.value.toLowerCase());
-        if (selectedMovie) {
-          this.selectForm.patchValue({contentId: selectedMovie.id});
-
-        } else {
-          this.selectForm.patchValue({contentId: ''});
+      .subscribe((form: any) => {
+        if (this.selectForm.valid) {
+          this.tmdb.findMovieByQuery(form.title)
+            .subscribe({
+              next: (value) => {
+                this.movieOptions = value.map((movie: any) => {
+                  return {
+                    id: movie.id,
+                    title: movie.title
+                  };
+                })
+              }, error: (err) => {
+                console.error(err.status);
+              }
+            });
         }
-      })
-    );
+      });
   }
 
   selectTitle() {
+    let selectedTitle = this.selectForm.get('title')?.value;
+    selectedTitle = this.movieOptions.find(movie => movie.title == selectedTitle);
+
+    if (selectedTitle != undefined) {
+      this.selectForm.patchValue({contentId: selectedTitle.id});
+    } else {
+      alert("Informe um filme existente!")
+    }
     this.moodService.saveMood(this.selectForm.value).subscribe({
       next: (value) => {
-        alert("humor atribuído com sucesso!")
+        alert("Humor atribuído com sucesso!")
         localStorage.setItem('moodType', this.moodType);
         localStorage.setItem('mood', this.mood);
-        this.router.navigate(['/recommender']);
+        this.router.navigate(['/recommender']).catch(err => console.error(err));
       },
       error: (err) => {
-        alert("deu erro");
+        alert("Erro ao atribuir o humor!");
       }
     });
   }
-
-
-  private _filter(value: string): { id: any; title: any; }[] {
-    const filterValue = value.toLowerCase();
-
-    return this.movieOptions.filter((option) =>
-      option.title && option.title.toLowerCase().includes(filterValue)
-    );
-  }
-
 }

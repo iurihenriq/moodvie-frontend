@@ -5,7 +5,7 @@
       <mat-label>{{ 'layout.movie' | translate }}/{{ 'layout.tvshow' | translate }}</mat-label>
       <input type="text" placeholder="{{ 'layout.findByName' | translate }}" matInput formControlName="title" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let movie of movies | async" [value]="movie.title">
+        <mat-option *ngFor="let movie of movieOptions" [value]="movie.title">
           {{ movie.title }}
         </mat-option>
       </mat-autocomplete>
