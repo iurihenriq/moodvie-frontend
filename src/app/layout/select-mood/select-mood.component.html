@@ -3,7 +3,7 @@
   <div class="detail"></div>
   <div class="container-subtitle-group">
     <p class="subtitle">{{'layout.feelingNow' | translate}}</p>
-    <mat-button-toggle-group [(ngModel)]="selectedOption" name="options" (ngModelChange)="onOptionChange($event)">
+    <mat-button-toggle-group [(ngModel)]="contentType" name="options" (ngModelChange)="onContentType($event)">
       <mat-button-toggle value="MOVIE">{{ 'layout.movie' | translate }}</mat-button-toggle>
       <mat-button-toggle value="TV">{{ 'layout.tvshow' | translate }}</mat-button-toggle>
     </mat-button-toggle-group>
