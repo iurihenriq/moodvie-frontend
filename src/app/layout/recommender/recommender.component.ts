@@ -34,8 +34,10 @@ export class RecommenderComponent implements OnInit {
   movie: number = 8;
   movieArray: any[] = new Array(this.movie);
 
-  page: number = 1;
+  page: number = 0;
   filterMovies: any[] = [];
+
+  index:number = 0;
 
   constructor(
     private service: TMDBService,
@@ -48,24 +50,36 @@ export class RecommenderComponent implements OnInit {
     this.findMovie();
   }
 
+
+  nextRecommendation(){
+    this.index++;
+    if(this.index == this.filterMovies.length){
+      this.findMovie();
+    }else{
+      this.findMovieDetails(this.index);
+    }
+  }
+
   findMovie() {
-this.request = this.service.findRecommendations(this.page).subscribe((movies: any) => {
+    this.page++;
+    this.request = this.service.findRecommendations(this.page).subscribe((movies: any) => {
       console.log(movies)
       for (let index = 0; index < movies.results.length; index++) {
-        if (movies.results[index].overview.length != 0) {
-          this.filterMovies.push(movies.results[index]);
+        if (movies.results[index].overview.length != 0 && !this.filterMovies.includes(movies.results[index].id)) {
+          this.filterMovies.push(movies.results[index].id);
         }
       }
 
       const moviesLenght = this.filterMovies.length;
+      this.findMovieDetails(this.index);
+    });
+  }
 
-
-      const randomIndex = Math.floor(Math.random() * this.filterMovies.length);
-      const randomMovie = this.filterMovies[randomIndex];
-
-      this.service
-        .findDetailsMovie(randomMovie.id)
+  findMovieDetails(index: number){
+    this.service
+        .findDetailsMovie(this.filterMovies[index])
         .subscribe((movieDetails: any) => {
+          console.log(movieDetails)
           this.genders = [];
           if (movieDetails.genres.length == 1) {
             this.genders.push(movieDetails.genres[0]);
@@ -79,7 +93,7 @@ this.request = this.service.findRecommendations(this.page).subscribe((movies: an
           this.sinopse = movieDetails.overview;
           this.banner = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
 
-          this.service.findTrailer(randomMovie.id).subscribe((trailer: any) => {
+          /* this.service.findTrailer(this.filterMovies[index]).subscribe((trailer: any) => {
             if (trailer.results.length !== 0) {
               this.trailer = `https://www.youtube.com/embed/${trailer.results[0].key}`;
               this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -88,12 +102,27 @@ this.request = this.service.findRecommendations(this.page).subscribe((movies: an
             } else {
               this.viewTrailer = false;
             }
-          });
+          }); */
+          if(movieDetails.videos){
+            if (movieDetails.videos.results.length !== 0) {
+              if(movieDetails.videos.results[0].official==true){
+                this.trailer = `https://www.youtube.com/embed/${movieDetails.videos.results[0].key}`;
+                this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+                  this.trailer
+                );
+              } else{
+                this.viewTrailer = false;
+              }
+            } else {
+              this.viewTrailer = false;
+            }
+          }else{
+            this.viewTrailer = false;
+          }
 
           this.year = movieDetails.release_date.substring(0, 4);
           this.duration = this.formatDuration(movieDetails.runtime);
         });
-    });
   }
 
   openDialogPlaylist() {

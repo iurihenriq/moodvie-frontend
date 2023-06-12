@@ -29,7 +29,7 @@
     height: 46px;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     gap: calc($gap-medium + $gap-small);
 
     button {

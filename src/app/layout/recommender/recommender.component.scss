@@ -97,7 +97,7 @@
   .moovie {
     padding: 0;
     display: grid;
-    align-items: start;
+    align-items: flex-start;
     grid-template-columns: 20% 80%;
 
     .content-moovie {
@@ -189,7 +189,7 @@
     .buttons {
       display: flex;
       align-items: center;
-      justify-content: end;
+      justify-content: flex-end;
       gap: calc($gap-small * 3);
     }
 
@@ -233,7 +233,7 @@
     .noteMoovie {
       display: flex;
       align-items: center;
-      justify-content: start;
+      justify-content: flex-start;
       font-size: $font-size-medium;
       gap: $gap-small;
       font-weight: 500;
