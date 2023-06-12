@@ -16,6 +16,8 @@ interface DialogData {
 })
 export class SelectMoodComponent implements OnInit {
 
+  contentType: string = 'MOVIE';
+
   moods: any[] = [
     {name: 'Feliz', emoji: '😄', value: 'HAPPY', translation: 'layout.happy', content: null},
     {name: 'Triste', emoji: '😢', value: 'SAD', translation: 'layout.sad', content: null},
@@ -38,7 +40,7 @@ export class SelectMoodComponent implements OnInit {
   }
 
   ngOnInit() {
-    // @ts-ignore
+    localStorage.setItem('contentType', this.contentType);
     this.moodService.findMoods().subscribe({
       next: (response: any[]) => {
         response.forEach((mood) => {
@@ -50,6 +52,7 @@ export class SelectMoodComponent implements OnInit {
   }
 
   openDialog(mood: any): void {
+    console.log(mood)
     if (mood.value != 'SURPRISE_ME') {
       if (!mood.content) {
         const dialogData: DialogData = {
@@ -62,7 +65,8 @@ export class SelectMoodComponent implements OnInit {
           disableClose: true,
         });
       } else {
-        localStorage.setItem('moodType', mood.moodType);
+        localStorage.setItem('contentId', mood.content.id);
+        localStorage.setItem('moodType', mood.value);
         localStorage.setItem('mood', mood.translation);
         this.router.navigate(['/recommender']).catch(err => console.error(err));
       }

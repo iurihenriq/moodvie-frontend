@@ -7,7 +7,7 @@ import { RegisterPageComponent } from './authentication/components/register-page
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterPageComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'select-mood', pathMatch: 'full' },
 ];
 
 @NgModule({

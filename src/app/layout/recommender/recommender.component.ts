@@ -40,6 +40,7 @@ export class RecommenderComponent implements OnInit {
   movie: number = 8;
   movieArray: any[] = new Array(this.movie);
 
+
   constructor(
     private service: TMDBService,
     private sanitizer: DomSanitizer,
@@ -52,13 +53,16 @@ export class RecommenderComponent implements OnInit {
   }
 
   findMovie() {
-    this.service.findMovieListRandom().subscribe((movies: any) => {
+    this.service.findRecommendations(1).subscribe((movies: any) => {
+      console.log(movies)
       const filterMovies = [];
       for (let index = 0; index < movies.results.length; index++) {
         if (movies.results[index].overview.length != 0) {
           filterMovies.push(movies.results[index]);
         }
       }
+
+      const moviesLenght = filterMovies.length;
 
       const randomIndex = Math.floor(Math.random() * filterMovies.length);
       const randomMovie = filterMovies[randomIndex];
