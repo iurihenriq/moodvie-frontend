@@ -16,7 +16,7 @@ interface DialogData {
 })
 export class SelectMoodComponent implements OnInit {
 
-  contentType: string = 'MOVIE';
+  contentType: string = '';
 
   moods: any[] = [
     {name: 'Feliz', emoji: '😄', value: 'HAPPY', translation: 'layout.happy', content: null},
@@ -27,21 +27,30 @@ export class SelectMoodComponent implements OnInit {
     {name: 'Entediado', emoji: '😒', value: 'BORED', translation: 'layout.bored', content: null},
     {name: 'Solitário', emoji: '😔', value: 'LONELY', translation: 'layout.lonely', content: null},
     {name: 'Nostálgico', emoji: '🌅', value: 'NOSTALGIC', translation: 'layout.nostalgic', content: null},
-    {name: 'Apaixonado', emoji: '❤️', value: 'IN_LOVE', translation: 'layout.inLove', content: null},
+    {name: 'Apaixonado', emoji: '❤️', value: 'IN_LOVE', translation: 'layout.inlove', content: null},
     {name: 'Pensativo', emoji: '🤔', value: 'THOUGHTFUL', translation: 'layout.thoughtful', content: null},
     {name: 'Emotivo', emoji: '😭', value: 'EMOTIONAL', translation: 'layout.emotional', content: null},
-    {name: 'Estressado', emoji: '😫', value: 'STRESSED_OUT', translation: 'layout.stressedOut', content: null},
+    {name: 'Estressado', emoji: '😫', value: 'STRESSED_OUT', translation: 'layout.stressedout', content: null},
     {name: 'Relaxado', emoji: '😌', value: 'RELAXED', translation: 'layout.relaxed', content: null},
     {name: 'Animado', emoji: '😃', value: 'EXCITED', translation: 'layout.excited', content: null},
-    {name: 'Surpreenda-me', emoji: '🎉', value: 'SURPRISE_ME', translation: 'layout.surpriseMe', content: null},
+    {name: 'Surpreenda-me', emoji: '🎉', value: 'SURPRISE_ME', translation: 'layout.surpriseme', content: null},
   ];
 
   constructor(private dialog: MatDialog, private router: Router, private moodService: MoodService) {
   }
 
   ngOnInit() {
-    this.onContentType("MOVIE");
-    // @ts-ignore
+    if (localStorage.getItem('contentType')) {
+      this.contentType = localStorage.getItem('contentType')!;
+      this.onContentType(localStorage.getItem('contentType')!);
+    } else {
+      this.contentType = "MOVIE";
+      this.onContentType("MOVIE")
+    }
+    this.setTitlesAtMoods();
+  }
+
+  setTitlesAtMoods() {
     this.moodService.findMoods().subscribe({
       next: (response: any[]) => {
         response.forEach((mood) => {
@@ -53,7 +62,8 @@ export class SelectMoodComponent implements OnInit {
   }
 
   onContentType(option: string) {
-    localStorage.setItem('contentType', option)
+    localStorage.setItem('contentType', option);
+    this.setTitlesAtMoods();
   }
 
   openDialog(mood: any): void {
