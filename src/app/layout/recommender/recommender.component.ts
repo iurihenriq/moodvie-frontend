@@ -79,6 +79,7 @@ export class RecommenderComponent implements OnInit {
     this.service
         .findDetailsMovie(this.filterMovies[index])
         .subscribe((movieDetails: any) => {
+          console.log(movieDetails)
           this.genders = [];
           if (movieDetails.genres.length == 1) {
             this.genders.push(movieDetails.genres[0]);
@@ -92,7 +93,7 @@ export class RecommenderComponent implements OnInit {
           this.sinopse = movieDetails.overview;
           this.banner = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
 
-          this.service.findTrailer(this.filterMovies[index]).subscribe((trailer: any) => {
+          /* this.service.findTrailer(this.filterMovies[index]).subscribe((trailer: any) => {
             if (trailer.results.length !== 0) {
               this.trailer = `https://www.youtube.com/embed/${trailer.results[0].key}`;
               this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -101,7 +102,19 @@ export class RecommenderComponent implements OnInit {
             } else {
               this.viewTrailer = false;
             }
-          });
+          }); */
+          if(movieDetails.videos){
+            if (movieDetails.videos.results.length !== 0) {
+            this.trailer = `https://www.youtube.com/embed/${movieDetails.videos.results[0].key}`;
+            this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+              this.trailer
+            );
+            } else {
+              this.viewTrailer = false;
+            }
+          }else{
+            this.viewTrailer = false;
+          }
 
           this.year = movieDetails.release_date.substring(0, 4);
           this.duration = this.formatDuration(movieDetails.runtime);
