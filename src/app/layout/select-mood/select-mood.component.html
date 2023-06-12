@@ -1,10 +1,16 @@
 <div class="content">
   <p class="title">{{'layout.discoverTitle' | translate}}</p>
   <div class="detail"></div>
-  <p class="subtitle">{{'layout.feelingNow' | translate}}</p>
+  <div class="container-subtitle-group">
+    <p class="subtitle">{{'layout.feelingNow' | translate}}</p>
+    <mat-button-toggle-group [(ngModel)]="selectedOption" name="options" (ngModelChange)="onOptionChange($event)">
+      <mat-button-toggle value="MOVIE">{{ 'layout.movie' | translate }}</mat-button-toggle>
+      <mat-button-toggle value="TV">{{ 'layout.tvshow' | translate }}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
   <div class="container-moods">
-    <div (click)="openDialog(mood)"
-         class="container-mood" *ngFor="let mood of moods">
+    <div (click)="openDialog(mood)" class="container-mood" *ngFor="let mood of moods">
       <p class="emoji">{{ mood.emoji }}</p>
       <p class="title-mood">{{ mood.translation | translate }}</p>
     </div>
