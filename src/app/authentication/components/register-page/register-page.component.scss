@@ -37,7 +37,7 @@
   .container-card {
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
     justify-content: center;
     gap: $gap-large;
     padding: $padding-large;
@@ -161,7 +161,7 @@
     width: 50rem;
     padding: 30px;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     gap: 60px;
     flex-direction: column;
