@@ -21,10 +21,17 @@
     align-items: center;
 
     mat-button-toggle-group {
+      height: 30px;
       position: absolute;
       right: 0;
       margin-right: 25px;
       font-size: 1.2rem;
+
+      mat-button-toggle {
+        height: 30px;
+        display: flex;
+        align-items: center;
+      }
     }
   }
 
@@ -42,6 +49,8 @@
   }
 
   .subtitle {
+    max-width: 400px;
+    text-align: center;
     font-size: $font-size-large;
   }
 
@@ -50,8 +59,7 @@
     grid-template-columns: repeat(5, 1fr);
     height: 100%;
     width: 100%;
-    gap: 50px;
-    margin: 0 50px;
+    gap: 25px;
 
     .container-mood {
       cursor: pointer;
@@ -63,7 +71,7 @@
       background-color: $secondary-color;
       border: 1px solid $details-color;
       border-radius: $border-radius-medium;
-      padding: 10px;
+      padding: 0 10px;
       transition: all 0.2s ease;
 
       .emoji {
@@ -79,6 +87,78 @@
       &:hover {
         scale: 1.1;
         background-color: $details-color;
+      }
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+  .content {
+    padding: 0;
+
+    mat-button-toggle-group {
+      margin: 0 !important;
+    }
+  }
+}
+
+@media (max-width: 1360px) {
+  .content {
+    .container-moods {
+      gap: 12px !important;
+
+      .container-mood {
+        gap: 5px;
+        padding: 0 5px;
+      }
+    }
+  }
+
+  @media (max-width: 1360px) {
+    .content {
+      .container-moods {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .subtitle {
+        max-width: 300px;
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .content {
+      .subtitle {
+        max-width: 300px;
+      }
+
+      .emoji {
+        font-size: 3.5rem !important;
+      }
+
+      .title-mood {
+        font-size: 1.5rem !important;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .content {
+      .title {
+        font-size: 2.3rem;
+      }
+
+      .subtitle {
+        font-size: 1.8rem;
+        max-width: 220px;
+      }
+
+      .emoji {
+        font-size: 3.5rem !important;
+      }
+
+      .title-mood {
+        font-size: 1.5rem !important;
       }
     }
   }
