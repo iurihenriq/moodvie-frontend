@@ -18,6 +18,8 @@ export class SelectMoodComponent implements OnInit {
 
   contentType: string = '';
 
+  isLoading = false;
+
   moods: any[] = [
     {name: 'Feliz', emoji: '😄', value: 'HAPPY', translation: 'layout.happy', content: null},
     {name: 'Triste', emoji: '😢', value: 'SAD', translation: 'layout.sad', content: null},
@@ -51,12 +53,15 @@ export class SelectMoodComponent implements OnInit {
   }
 
   setTitlesAtMoods() {
+    this.isLoading = true;
+    this.moods.map(mood => mood.content = null);
     this.moodService.findMoods().subscribe({
       next: (response: any[]) => {
         response.forEach((mood) => {
-          let index = this.moods.findIndex(element => element.value == mood.moodType)
-          this.moods[index].content = mood.content
+          let index = this.moods.findIndex(element => element.value == mood.moodType);
+          this.moods[index].content = mood.content;
         })
+        this.isLoading = false;
       }
     })
   }
@@ -67,7 +72,6 @@ export class SelectMoodComponent implements OnInit {
   }
 
   openDialog(mood: any): void {
-    console.log(mood)
     if (mood.value != 'SURPRISE_ME') {
       if (!mood.content) {
         const dialogData: DialogData = {
