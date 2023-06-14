@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor(translate: TranslateService) {
     translate.setDefaultLang('pt-BR');
-    const lang = localStorage.getItem('lang') || navigator.language;
+    const lang = localStorage.getItem('language') || navigator.language;
     if (lang) {
       translate.use(lang);
     } else {

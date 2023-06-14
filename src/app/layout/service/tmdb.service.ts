@@ -29,7 +29,7 @@ export class TMDBService {
 
   findRecommendations(page:number){
     const type = localStorage.getItem('contentType');
-    const lang = localStorage.getItem('lang');
+    const lang = localStorage.getItem('language');
     const mood = localStorage.getItem('moodType');
     const url = `${environment.apiUrl}/api/tmdb/recommendations/${type}/${mood}/${page}/${lang}`
     return this.http.get<any[]>(url);
@@ -37,7 +37,7 @@ export class TMDBService {
 
   findDetailsMovie(contentId: any) {
     const type = localStorage.getItem('contentType');
-    const lang = localStorage.getItem('lang');
+    const lang = localStorage.getItem('language');
     const url = `${environment.apiUrl}/api/tmdb/details/${type}/${contentId}/${lang}`
     //`https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.apiKey}&language=${this.lang}&append_to_response=videos,watch/providers`;
 
@@ -51,7 +51,7 @@ export class TMDBService {
   } */
 
   findMovieByQuery(title: string) {
-    const lang = localStorage.getItem('lang');
+    const lang = localStorage.getItem('language');
     const type = localStorage.getItem('contentType');
     const url = `${environment.apiUrl}/api/tmdb/query/${type}/${lang}?query=${title}`
 
