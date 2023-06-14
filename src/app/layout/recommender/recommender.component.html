@@ -4,10 +4,10 @@
     <button routerLink="/select-mood">{{ 'layout.changeFeeling' | translate}}</button>
   </div>
   <div class="container-recommender">
-    <div class="movie-serie">
+    <!-- <div class="movie-serie">
       <a (click)="setType('movie')">{{ 'layout.movie' | translate}}</a>
       <a (click)="setType('tv')">{{ 'layout.tvshow' | translate}}</a>
-    </div>
+    </div> -->
 
     <div class="container moovie">
       <mat-progress-bar color="primary" mode="indeterminate" *ngIf="!request.closed"></mat-progress-bar>
@@ -26,10 +26,14 @@
                   </div>
                 </div>
               </div>
-              <a [href]="linkStreaming" target="_blank">
-                <div [style.background-image]="'url('+ streamingURL + ')'" class="streaming"></div>
-              </a>
-            </div>
+              <div class="streamings-row">
+                <div *ngFor="let stream of streamingIMG; index as i">
+                  <a [href]="linkStreaming[i]" target="_blank">
+                    <div [style.background-image]="'url('+ streamingIMG[i] + ')'" class="streaming"></div>
+                  </a>
+                </div>
+              </div>
+              </div>
             <p class="infos">{{year}} ● {{duration}}</p>
           </div>
         </div>

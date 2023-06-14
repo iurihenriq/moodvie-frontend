@@ -324,3 +324,8 @@ mat-progress-bar {
   z-index: 100;
   // top: 0;
 }
+.streamings-row{
+  display: flex;
+  gap: 15px;
+  flex-direction: row;
+}

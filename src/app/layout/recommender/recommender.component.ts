@@ -25,9 +25,11 @@ export class RecommenderComponent implements OnInit {
   duration: string = '';
   stars: number = 5;
   starsArray: any[] = new Array(this.stars);
-  streaming: string = 'hbo';
-  streamingURL: string = `../../../assets/images/streamings/${this.streaming}.png`;
-  linkStreaming: string = 'https://www.hbomax.com/br/pt';
+  streamings: string[] = []//'hbo';
+  tmdbIMGLink:string = 'https://image.tmdb.org/t/p/w500'
+  streamingIMG: string[] = []//`../../../assets/images/streamings/${this.streaming}.png`;
+  linkStreaming: string[] = []//'https://www.hbomax.com/br/pt';
+  watchProviders: any;
   sinopse: string = '';
   genders: any = [];
 
@@ -53,11 +55,14 @@ export class RecommenderComponent implements OnInit {
 
   nextRecommendation(){
     this.index++;
-    if(this.index == this.filterMovies.length){
-      this.findMovie();
-    }else{
-      this.findMovieDetails(this.index);
-    }
+    this.linkStreaming = [];
+    this.streamingIMG = [];
+    this.streamings = [];
+        if(this.index == this.filterMovies.length){
+        this.findMovie();
+        }else{
+          this.findMovieDetails(this.index);
+        }
   }
 
   findMovie() {
@@ -69,8 +74,6 @@ export class RecommenderComponent implements OnInit {
           this.filterMovies.push(movies.results[index].id);
         }
       }
-
-      const moviesLenght = this.filterMovies.length;
       this.findMovieDetails(this.index);
     });
   }
@@ -93,16 +96,25 @@ export class RecommenderComponent implements OnInit {
           this.sinopse = movieDetails.overview;
           this.banner = `https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`;
 
-          /* this.service.findTrailer(this.filterMovies[index]).subscribe((trailer: any) => {
-            if (trailer.results.length !== 0) {
-              this.trailer = `https://www.youtube.com/embed/${trailer.results[0].key}`;
-              this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-                this.trailer
-              );
-            } else {
-              this.viewTrailer = false;
+          this.watchProviders = movieDetails['watch/providers']
+          if(localStorage.getItem('language') === 'pt-BR'){
+            if(this.watchProviders.results.BR){
+              this.watchProviders.results.BR.flatrate.forEach((fr: any)=>{
+                this.streamings.push(fr.provider_name);
+                this.streamingIMG.push(this.tmdbIMGLink+fr.logo_path)
+                this.linkStreaming.push(this.watchProviders.results.BR.link);
+              })
             }
-          }); */
+          } else if(localStorage.getItem('language') === 'en-US'){
+            if(this.watchProviders.results.US){
+              this.watchProviders.results.US.flatrate.forEach((fr: any)=>{
+                this.streamings.push(fr.provider_name);
+                this.streamingIMG.push(this.tmdbIMGLink+fr.logo_path)
+                this.linkStreaming.push(this.watchProviders.results.US.link);
+              })
+            }
+          }
+
           if(movieDetails.videos){
             if (movieDetails.videos.results.length !== 0) {
               if(movieDetails.videos.results[0].official==true){

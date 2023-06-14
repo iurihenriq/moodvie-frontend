@@ -10,9 +10,11 @@
   </div>
 
   <div class="container-moods">
-    <button [disabled]="isLoading" (click)="openDialog(mood)" class="container-mood" *ngFor="let mood of moods">
+    <ng-container  *ngFor="let mood of moods">
+    <button [disabled]="isLoading || mood.value == 'SURPRISE_ME'" (click)="openDialog(mood)" class="container-mood">
       <p class="emoji">{{ mood.emoji }}</p>
       <p class="title-mood">{{ mood.translation | translate }}</p>
     </button>
+  </ng-container>
   </div>
 </div>

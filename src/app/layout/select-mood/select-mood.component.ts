@@ -96,7 +96,7 @@ export class SelectMoodComponent implements OnInit {
   }
 
   surpriseMe(mood: any) {
-    localStorage.setItem('moodType', mood.moodType);
+    localStorage.setItem('moodType', mood.value);
     localStorage.setItem('mood', mood.translation);
     this.router.navigate(['/recommender']).catch(err => console.error(err));
   }
